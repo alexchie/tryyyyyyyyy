@@ -1454,9 +1454,9 @@
                     <input type="text" id="accountLast5" maxlength="5" required>
                 </div>
                 <div class="form-group">
-                    <label>匯款截圖 *</label>
-                    <input type="file" id="paymentScreenshot" accept="image/*" required style="padding: 10px;">
-                    <small style="color: #666; display: block; margin-top: 5px;">請上傳匯款證明截圖（支援 JPG、PNG 格式）</small>
+                    <label>匯款截圖</label>
+                    <input type="file" id="paymentScreenshot" accept="image/*" style="padding: 10px;">
+                    <small style="color: #666; display: block; margin-top: 5px;">請上傳匯款證明截圖（選填，支援 JPG、PNG 格式）</small>
                 </div>
                 <div class="form-group">
                     <label>備註</label>
@@ -1799,8 +1799,8 @@
             const note = document.getElementById('orderNote').value;
             const screenshotFile = document.getElementById('paymentScreenshot').files[0];
 
-            if (!name || !phone || !email || !storeType || !storeCity || !storeName || !account || !screenshotFile) {
-                alert('請填寫所有必填欄位並上傳匯款截圖！');
+            if (!name || !phone || !email || !storeType || !storeCity || !storeName || !account) {
+                alert('請填寫所有必填欄位！');
                 submitButton.disabled = false;
                 submitButton.style.opacity = '1';
                 submitButton.style.cursor = 'pointer';
@@ -1844,11 +1844,16 @@
                 </div>
             `;
 
-            // 壓縮截圖（最大寬度1200px，品質0.7）
-            const screenshotBase64 = await compressImage(screenshotFile, 1200, 0.7);
+            // 如果有上傳截圖，則壓縮截圖（最大寬度1200px，品質0.7）
+            let screenshotBase64 = null;
+            let screenshotFilename = null;
 
-            console.log('原始檔案大小:', screenshotFile.size, 'bytes');
-            console.log('壓縮後大小:', screenshotBase64.length, 'bytes');
+            if (screenshotFile) {
+                screenshotBase64 = await compressImage(screenshotFile, 1200, 0.7);
+                screenshotFilename = screenshotFile.name;
+                console.log('原始檔案大小:', screenshotFile.size, 'bytes');
+                console.log('壓縮後大小:', screenshotBase64.length, 'bytes');
+            }
 
             const orderData = {
                 orderTime,
@@ -1859,7 +1864,7 @@
                 total,
                 note,
                 paymentScreenshot: screenshotBase64,
-                screenshotFilename: screenshotFile.name
+                screenshotFilename: screenshotFilename
             };
 
             // 更新為傳送狀態
