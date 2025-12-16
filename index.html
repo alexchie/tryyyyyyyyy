@@ -498,18 +498,42 @@
                 height: 150px;
             }
 
-            /* 介紹四項目一行 - Category navigation 4 items per row */
+            /* 分類導航橫向滑動 - Category navigation horizontal scroll */
+            .category-nav {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                padding: 20px 15px;
+            }
+
             .category-nav > div {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-                width: 100%;
+                display: flex;
+                gap: 10px;
+                min-width: min-content;
+                flex-wrap: nowrap;
             }
 
             .category-nav button {
-                font-size: 0.8em;
-                padding: 8px 10px;
-                min-width: 0;
+                font-size: 0.85em;
+                padding: 10px 16px;
+                min-width: auto;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            /* 國家選擇橫向滑動 - Country cards horizontal scroll */
+            .country-cards {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                padding: 10px 5px;
+            }
+
+            .country-card {
+                min-width: 180px;
+                flex-shrink: 0;
             }
 
             /* 購物車按鈕調整 */
