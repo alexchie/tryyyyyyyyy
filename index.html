@@ -768,11 +768,79 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
+        .product-detail-image-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
         .product-detail-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             padding: 30px;
+        }
+
+        /* 圖片輪播按鈕 */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn-prev {
+            left: 20px;
+        }
+
+        .slider-btn-next {
+            right: 20px;
+        }
+
+        /* 圖片指示器 */
+        .product-detail-image-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .image-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .image-dot.active {
+            background: white;
+            border-color: #d32f2f;
+            transform: scale(1.3);
         }
 
         .product-detail-info {
@@ -1521,7 +1589,39 @@
             { id: 33, name: '[新加坡] 金鴨 鹹蛋黃蟹天婦羅紫菜', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1co2bGsvkxK3n7L2zvI1ijo_u29xRg0VJ&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '鹹蛋黃蟹天婦羅紫菜將香濃鹹蛋黃和蟹肉結合，再加上炸得香脆的紫菜解膩，入口有濃郁的海鮮風味，非常適合作為下酒菜。'},
             { id: 34, name: '[新加坡] 金鴨 鹹蛋黃炸魚皮', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1LORX9kXDnBwe4Wolc99KNHjrGPET-sPm&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '金鴨鹹蛋黃炸魚皮，酥脆可口，鹹蛋黃風味濃郁，是新加坡國民零食！'},
             { id: 35, name: '[新加坡] 金鴨 鹹蛋黃鹹薯片', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1Yaa4KOBWPtYOcJkqgqNB92ni1ELBRa0G&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '金鴨鹹蛋黃鹹薯片，薯片香脆，搭配濃郁的鹹蛋黃醬，一吃就停不下來的美味！'},
-            { id: 36, name: '[韓國] Mediheal N.M.F 針劑水庫面膜', price: 350, description: '10片裝', image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000', category: 'olive-young', country: 'korea', detailedDescription: '韓國 Olive Young 熱銷 NO.1 面膜，含有豐富的 N.M.F 天然保濕因子，深層補水保濕，敏感肌也能安心使用。一片見效，肌膚立即水潤透亮！'},
+            {
+                id: 36,
+                name: '[韓國] Mediheal N.M.F 針劑水庫面膜',
+                price: 350,
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000',
+                category: 'olive-young',
+                country: 'korea',
+                detailedDescription: '韓國 Olive Young 熱銷 NO.1 面膜，含有豐富的 N.M.F 天然保濕因子，深層補水保濕，敏感肌也能安心使用。一片見效，肌膚立即水潤透亮！',
+                variants: [
+                    {
+                        id: 3601,
+                        name: '10片裝',
+                        price: 350,
+                        image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000',
+                        description: '適合初次嘗試'
+                    },
+                    {
+                        id: 3602,
+                        name: '20片裝',
+                        price: 650,
+                        image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000',
+                        description: '經濟實惠，回購首選'
+                    },
+                    {
+                        id: 3603,
+                        name: '30片裝',
+                        price: 900,
+                        image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000',
+                        description: '超值大容量，長期保養'
+                    }
+                ]
+            },
             { id: 37, name: '[韓國] COSRX 蝸牛黏液精華液', price: 480, description: '96% 蝸牛黏液 100ml', image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000', category: 'olive-young', country: 'korea', detailedDescription: '含96%蝸牛黏液精華，有效修復肌膚、淡化痘疤，改善細紋。質地清爽不黏膩，是韓國護膚界的明星產品，適合所有膚質使用。'},
             { id: 38, name: '[韓國] LANEIGE 水酷肌因保濕晚安面膜', price: 580, description: '70ml 薰衣草香', image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000', category: 'olive-young', country: 'korea', detailedDescription: '韓國經典睡眠面膜，薰衣草香氣舒緩放鬆。夜間修護補水，一覺醒來肌膚水嫩透亮。凝膠質地清爽不悶，是夜間護膚的必備單品！'},
             { id: 39, name: '[韓國] Wiggle Wiggle QQ軟糖 - 綜合水果', price: 120, description: '80g 袋裝', image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000', category: 'wiggle-wiggle', country: 'korea', detailedDescription: '韓國超人氣 Wiggle Wiggle 軟糖，Q彈有嚼勁！綜合水果口味包含草莓、葡萄、青蘋果、柳橙等多種口味，酸甜適中，大人小孩都喜歡。'},
@@ -1547,23 +1647,180 @@
             event.target.classList.add('active');
         }
 
+        // 當前查看的產品數據（用於圖片輪播）
+        let currentProduct = null;
+        let currentImageIndex = 0;
+        let productImages = [];
+
         // 顯示商品詳情
         function showProductDetail(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            document.getElementById('productDetailImage').src = product.image;
+            currentProduct = product;
+            const hasVariants = product.variants && product.variants.length > 0;
+
+            // 準備圖片列表
+            if (hasVariants) {
+                productImages = product.variants.map(v => v.image);
+            } else {
+                productImages = [product.image];
+            }
+            currentImageIndex = 0;
+
+            // 顯示第一張圖片
+            document.getElementById('productDetailImage').src = productImages[0];
             document.getElementById('productDetailImage').alt = product.name;
             document.getElementById('productDetailName').textContent = product.name;
-            document.getElementById('productDetailPrice').textContent = `NT$ ${product.price}`;
-            document.getElementById('productDetailSpec').textContent = product.description;
-            
-            // 使用商品的詳細介紹，如果沒有則使用預設文案
+
+            // 根據是否有款式顯示不同的價格
+            if (hasVariants) {
+                const minPrice = Math.min(...product.variants.map(v => v.price));
+                const maxPrice = Math.max(...product.variants.map(v => v.price));
+                if (minPrice === maxPrice) {
+                    document.getElementById('productDetailPrice').textContent = `NT$ ${minPrice}`;
+                } else {
+                    document.getElementById('productDetailPrice').textContent = `NT$ ${minPrice} - ${maxPrice}`;
+                }
+                document.getElementById('productDetailSpec').textContent = product.description;
+            } else {
+                document.getElementById('productDetailPrice').textContent = `NT$ ${product.price}`;
+                document.getElementById('productDetailSpec').textContent = product.description;
+            }
+
+            // 使用商品的詳細介紹
             const descriptionText = product.detailedDescription || '這是一個精選的優質商品，品質保證，值得您的信賴與選購。';
             document.getElementById('productDetailDescriptionText').innerHTML = descriptionText;
 
+            // 顯示/隱藏圖片輪播按鈕
+            const showSliderBtns = productImages.length > 1;
+            document.getElementById('sliderPrevBtn').style.display = showSliderBtns ? 'block' : 'none';
+            document.getElementById('sliderNextBtn').style.display = showSliderBtns ? 'block' : 'none';
+
+            // 渲染圖片指示器
+            renderImageDots();
+
+            // 處理款式選擇區域
+            if (hasVariants) {
+                document.getElementById('productVariantsSection').style.display = 'block';
+                renderVariantsList(product.variants);
+            } else {
+                document.getElementById('productVariantsSection').style.display = 'none';
+            }
+
             document.getElementById('productDetailModal').style.display = 'block';
             document.body.style.overflow = 'hidden'; // 防止背景滾動
+        }
+
+        // 渲染款式列表
+        function renderVariantsList(variants) {
+            const container = document.getElementById('productVariantsList');
+            container.innerHTML = variants.map((variant, index) => `
+                <div class="variant-item" style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600; font-size: 15px; margin-bottom: 5px;">${variant.name}</div>
+                            <div style="color: #666; font-size: 13px; margin-bottom: 5px;">${variant.description}</div>
+                            <div style="color: #d32f2f; font-weight: 600; font-size: 16px;">NT$ ${variant.price}</div>
+                        </div>
+                        <button onclick="switchToVariantImage(${index})" style="background: #f5f5f5; border: 1px solid #ddd; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 13px;">查看圖片</button>
+                    </div>
+                    <div class="quantity-control" style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 14px; color: #666;">數量：</span>
+                        <button onclick="decreaseVariantQty(${variant.id})" style="width: 32px; height: 32px; border: 1px solid #ddd; background: white; border-radius: 5px; cursor: pointer;">-</button>
+                        <input type="number" id="variant-qty-${variant.id}" value="0" min="0" style="width: 60px; text-align: center; border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                        <button onclick="increaseVariantQty(${variant.id})" style="width: 32px; height: 32px; border: 1px solid #ddd; background: white; border-radius: 5px; cursor: pointer;">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 增加款式數量
+        function increaseVariantQty(variantId) {
+            const input = document.getElementById(`variant-qty-${variantId}`);
+            input.value = parseInt(input.value) + 1;
+        }
+
+        // 減少款式數量
+        function decreaseVariantQty(variantId) {
+            const input = document.getElementById(`variant-qty-${variantId}`);
+            if (parseInt(input.value) > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        // 切換到指定款式的圖片
+        function switchToVariantImage(index) {
+            currentImageIndex = index;
+            document.getElementById('productDetailImage').src = productImages[index];
+            renderImageDots();
+        }
+
+        // 上一張圖片
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+            document.getElementById('productDetailImage').src = productImages[currentImageIndex];
+            renderImageDots();
+        }
+
+        // 下一張圖片
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % productImages.length;
+            document.getElementById('productDetailImage').src = productImages[currentImageIndex];
+            renderImageDots();
+        }
+
+        // 渲染圖片指示器
+        function renderImageDots() {
+            const dotsContainer = document.getElementById('productDetailImageDots');
+            if (productImages.length <= 1) {
+                dotsContainer.innerHTML = '';
+                return;
+            }
+            dotsContainer.innerHTML = productImages.map((_, index) => `
+                <span class="image-dot ${index === currentImageIndex ? 'active' : ''}" onclick="switchToVariantImage(${index})"></span>
+            `).join('');
+        }
+
+        // 將選中的款式加入購物車
+        function addVariantsToCart() {
+            if (!currentProduct || !currentProduct.variants) return;
+
+            let addedCount = 0;
+            currentProduct.variants.forEach(variant => {
+                const qty = parseInt(document.getElementById(`variant-qty-${variant.id}`).value);
+                if (qty > 0) {
+                    const cartItem = {
+                        id: variant.id,
+                        name: `${currentProduct.name} - ${variant.name}`,
+                        price: variant.price,
+                        quantity: qty,
+                        image: variant.image
+                    };
+
+                    // 檢查購物車中是否已有此款式
+                    const existingIndex = cart.findIndex(item => item.id === variant.id);
+                    if (existingIndex > -1) {
+                        cart[existingIndex].quantity += qty;
+                    } else {
+                        cart.push(cartItem);
+                    }
+                    addedCount++;
+                }
+            });
+
+            if (addedCount > 0) {
+                alert(`已加入 ${addedCount} 個款式到購物車！`);
+                updateCartDisplay();
+                closeProductDetail();
+
+                // 重置所有款式數量為 0
+                currentProduct.variants.forEach(variant => {
+                    document.getElementById(`variant-qty-${variant.id}`).value = 0;
+                });
+            } else {
+                alert('請至少選擇一個款式！');
+            }
         }
 
         // 關閉商品詳情
@@ -1591,25 +1848,49 @@
                 ? countryProducts
                 : countryProducts.filter(p => p.category === currentCategory);
 
-            grid.innerHTML = filteredProducts.map(product => `
-                <div class="product-card">
-                    <div class="product-image-wrapper" onclick="showProductDetail(${product.id})">
-                        <img src="${product.image}" alt="${product.name}">
-                        <div class="product-image-overlay">
-                            <div class="product-image-overlay-text">🔍 點擊查看詳情</div>
+            grid.innerHTML = filteredProducts.map(product => {
+                // 判斷是否為商品系列（有 variants）
+                const hasVariants = product.variants && product.variants.length > 0;
+
+                if (hasVariants) {
+                    // 商品系列：不顯示數量選擇，加入購物車改為打開詳情視窗
+                    return `
+                        <div class="product-card">
+                            <div class="product-image-wrapper" onclick="showProductDetail(${product.id})">
+                                <img src="${product.image}" alt="${product.name}">
+                                <div class="product-image-overlay">
+                                    <div class="product-image-overlay-text">🔍 點擊查看詳情</div>
+                                </div>
+                            </div>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-description">${product.description}</div>
+                            <div class="product-price">NT$ ${product.price} 起</div>
+                            <button class="add-to-cart" onclick="showProductDetail(${product.id})">查看款式</button>
                         </div>
-                    </div>
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-description">${product.description}</div>
-                    <div class="product-price">NT$ ${product.price}</div>
-                    <div class="quantity-control">
-                        <button onclick="decreaseQty(${product.id})">-</button>
-                        <input type="number" id="qty-${product.id}" value="1" min="1">
-                        <button onclick="increaseQty(${product.id})">+</button>
-                    </div>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">加入購物車</button>
-                </div>
-            `).join('');
+                    `;
+                } else {
+                    // 一般商品：保留原有的數量選擇和加入購物車功能
+                    return `
+                        <div class="product-card">
+                            <div class="product-image-wrapper" onclick="showProductDetail(${product.id})">
+                                <img src="${product.image}" alt="${product.name}">
+                                <div class="product-image-overlay">
+                                    <div class="product-image-overlay-text">🔍 點擊查看詳情</div>
+                                </div>
+                            </div>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-description">${product.description}</div>
+                            <div class="product-price">NT$ ${product.price}</div>
+                            <div class="quantity-control">
+                                <button onclick="decreaseQty(${product.id})">-</button>
+                                <input type="number" id="qty-${product.id}" value="1" min="1">
+                                <button onclick="increaseQty(${product.id})">+</button>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">加入購物車</button>
+                        </div>
+                    `;
+                }
+            }).join('');
         }
 
         function increaseQty(productId) {
@@ -2039,7 +2320,14 @@
         <div class="product-detail-content">
             <span class="product-detail-close" onclick="closeProductDetail()">&times;</span>
             <div class="product-detail-image-container">
-                <img id="productDetailImage" src="" alt="" class="product-detail-image">
+                <!-- 圖片輪播容器 -->
+                <div class="product-detail-image-slider">
+                    <button class="slider-btn slider-btn-prev" id="sliderPrevBtn" onclick="previousImage()" style="display: none;">&lt;</button>
+                    <img id="productDetailImage" src="" alt="" class="product-detail-image">
+                    <button class="slider-btn slider-btn-next" id="sliderNextBtn" onclick="nextImage()" style="display: none;">&gt;</button>
+                </div>
+                <!-- 圖片指示器 -->
+                <div class="product-detail-image-dots" id="productDetailImageDots"></div>
             </div>
             <div class="product-detail-info">
                 <h2 class="product-detail-name" id="productDetailName"></h2>
@@ -2048,6 +2336,13 @@
                 <div class="product-detail-description" id="productDetailDescription">
                     <h4>📝 商品介紹</h4>
                     <p id="productDetailDescriptionText"></p>
+                </div>
+
+                <!-- 款式選擇區域（僅商品系列顯示） -->
+                <div id="productVariantsSection" style="display: none;">
+                    <h4 style="margin: 20px 0 10px 0; font-size: 16px;">🛍️ 選擇款式</h4>
+                    <div id="productVariantsList"></div>
+                    <button class="add-to-cart" onclick="addVariantsToCart()" style="margin-top: 20px; width: 100%;">確認加入購物車</button>
                 </div>
             </div>
         </div>
