@@ -357,7 +357,7 @@
 
         .cart-badge {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
             background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
             color: white;
@@ -433,6 +433,7 @@
 
         /* 響應式導航 */
         @media (max-width: 768px) {
+            /* 導航選單 */
             .nav-menu ul {
                 flex-wrap: wrap;
             }
@@ -456,6 +457,67 @@
             .nav-menu a {
                 font-size: 0.95em;
                 padding: 10px 15px;
+            }
+
+            /* 文字縮小 - Smaller text for mobile */
+            body {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .product-name {
+                font-size: 0.9em;
+            }
+
+            .product-description {
+                font-size: 0.85em;
+            }
+
+            .product-price {
+                font-size: 1em;
+            }
+
+            /* 商品兩排 - 2-column product grid */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .product-card {
+                padding: 15px;
+            }
+
+            .product-card img {
+                height: 150px;
+            }
+
+            /* 介紹四項目一行 - Category navigation 4 items per row */
+            .category-nav > div {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+                width: 100%;
+            }
+
+            .category-nav button {
+                font-size: 0.8em;
+                padding: 8px 10px;
+                min-width: 0;
+            }
+
+            /* 購物車按鈕調整 */
+            .cart-badge {
+                padding: 12px 20px;
+                font-size: 0.95em;
+                bottom: 15px;
+                right: 15px;
             }
         }
 
