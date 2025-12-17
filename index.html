@@ -447,10 +447,13 @@
             /* 導航選單 - 4*1 排列 */
             .nav-menu ul {
                 flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .nav-menu li {
-                flex: 1 1 25%;
+                flex: 0 0 auto;
+                min-width: 25%;
                 border-right: 1px solid #000;
                 border-bottom: none;
             }
@@ -460,8 +463,10 @@
             }
 
             .nav-menu a {
-                font-size: 0.85em;
-                padding: 8px 10px;
+                font-size: 0.75em;
+                padding: 10px 8px;
+                white-space: nowrap;
+                display: block;
             }
 
             /* 文字縮小 - Smaller text for mobile */
@@ -492,7 +497,7 @@
             /* 商品兩排 - 2-column product grid */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 2px;
+                gap: 1px;
                 margin-bottom: 20px;
             }
 
@@ -1715,7 +1720,7 @@
             { id: 35, name: '[新加坡] 金鴨 鹹蛋黃鹹薯片', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1Yaa4KOBWPtYOcJkqgqNB92ni1ELBRa0G&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '金鴨鹹蛋黃鹹薯片，薯片香脆，搭配濃郁的鹹蛋黃醬，一吃就停不下來的美味！'},
             {
                 id: 36,
-                name: '[韓國] Mediheal N.M.F 針劑水庫面膜',
+                name: 'Mediheal N.M.F 針劑水庫面膜',
                 price: 350,
                 description: '多款式可選',
                 image: 'https://drive.google.com/thumbnail?id=14l7l-41wt5heKdPW4UFH8QcV9qBvptZf&sz=w1000',
@@ -1748,7 +1753,7 @@
             },
             {
                 id: 37,
-                name: '[韓國] COSRX 蝸牛黏液精華液',
+                name: 'COSRX 蝸牛黏液精華液',
                 price: 280,
                 description: '多容量可選',
                 image: 'https://drive.google.com/thumbnail?id=19IdsZN5fcf--8sznQX5nHgV8ZVy5LdWK&sz=w1000',
@@ -1781,7 +1786,7 @@
             },
             {
                 id: 38,
-                name: '[韓國] LANEIGE 水酷肌因保濕晚安面膜',
+                name: 'LANEIGE 水酷肌因保濕晚安面膜',
                 price: 280,
                 description: '多容量可選',
                 image: 'https://drive.google.com/thumbnail?id=1sxuIwlnoR7IG8RDaFOh3qSaF-mMcyyoL&sz=w1000',
@@ -1814,7 +1819,7 @@
             },
             {
                 id: 39,
-                name: '[韓國] Wiggle Wiggle QQ軟糖 - 綜合水果',
+                name: 'Wiggle Wiggle QQ軟糖 - 綜合水果',
                 price: 120,
                 description: '多規格可選',
                 image: 'https://drive.google.com/thumbnail?id=1q34TV7wrEg1e2HKCM2w9QqEtznhSn6F2&sz=w1000',
@@ -1847,7 +1852,7 @@
             },
             {
                 id: 40,
-                name: '[韓國] Wiggle Wiggle 爆漿果凍 - 葡萄',
+                name: 'Wiggle Wiggle 爆漿果凍 - 葡萄',
                 price: 150,
                 description: '多規格可選',
                 image: 'https://drive.google.com/thumbnail?id=1wPMFdpAdLtA-hJu1kYT5-jA42B3dUBby&sz=w1000',
@@ -1880,7 +1885,7 @@
             },
             {
                 id: 41,
-                name: '[韓國] Wiggle Wiggle 棉花糖 - 草莓牛奶',
+                name: 'Wiggle Wiggle 棉花糖 - 草莓牛奶',
                 price: 100,
                 description: '多規格可選',
                 image: 'https://drive.google.com/thumbnail?id=125700upQGXoG4Pnzk5Zub43wO3R1Yht-&sz=w1000',
@@ -1913,7 +1918,7 @@
             },
             {
                 id: 42,
-                name: '[韓國] MLB NY 經典棒球帽',
+                name: 'MLB NY 經典棒球帽',
                 price: 1280,
                 description: '多色可選',
                 image: 'https://drive.google.com/thumbnail?id=1N59SmB0QxaHwUq1-UQ5403qUifktFV55&sz=w1000',
@@ -1946,7 +1951,7 @@
             },
             {
                 id: 43,
-                name: '[韓國] MLB 老花後背包',
+                name: 'MLB 老花後背包',
                 price: 2480,
                 description: '多色可選',
                 image: 'https://drive.google.com/thumbnail?id=1zKhdXf7IHfL3nLUacjCEvs5Pg3cjLteE&sz=w1000',
@@ -1979,7 +1984,7 @@
             },
             {
                 id: 44,
-                name: '[韓國] MLB Bigball Chunky 老爹鞋',
+                name: 'MLB Bigball Chunky 老爹鞋',
                 price: 3280,
                 description: '多色可選',
                 image: 'https://drive.google.com/thumbnail?id=16f0YLekgLcN738vz8ICIklnzGOuOH3qT&sz=w1000',
