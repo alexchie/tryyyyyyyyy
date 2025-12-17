@@ -433,6 +433,17 @@
 
         /* 響應式導航 */
         @media (max-width: 768px) {
+            /* 移除外框，增加手機版顯示空間 */
+            body {
+                padding: 0;
+            }
+
+            .container {
+                padding: 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
             /* 導航選單 */
             .nav-menu ul {
                 flex-wrap: wrap;
