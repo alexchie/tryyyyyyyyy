@@ -2095,9 +2095,12 @@
             // 處理款式選擇區域
             if (hasVariants) {
                 document.getElementById('productVariantsSection').style.display = 'block';
+                document.getElementById('productSimpleSection').style.display = 'none';
                 renderVariantsList(product.variants);
             } else {
                 document.getElementById('productVariantsSection').style.display = 'none';
+                document.getElementById('productSimpleSection').style.display = 'block';
+                document.getElementById('simpleProductQty').value = 1;
             }
 
             document.getElementById('productDetailModal').style.display = 'block';
@@ -2111,65 +2114,64 @@
                 <div class="variant-item" onclick="switchToVariantImage(${index})" style="
                     border: 1px solid #ddd;
                     border-radius: 8px;
-                    padding: 12px;
-                    margin-bottom: 10px;
+                    padding: 8px;
+                    margin-bottom: 8px;
                     display: flex;
                     align-items: center;
-                    gap: 12px;
+                    gap: 8px;
                     cursor: pointer;
                     transition: all 0.2s ease;
-                    min-height: 80px;
-                    max-height: 80px;
+                    min-height: 60px;
+                    max-height: 60px;
                 " onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='none'">
                     <!-- 左側：商品圖片 -->
                     <img src="${variant.image}" alt="${variant.name}" style="
-                        width: 60px;
-                        height: 60px;
+                        width: 45px;
+                        height: 45px;
                         object-fit: cover;
-                        border-radius: 6px;
+                        border-radius: 4px;
                         flex-shrink: 0;
                     ">
 
                     <!-- 中間：商品資訊 -->
-                    <div style="flex: 1; min-width: 0;">
-                        <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px; color: #333;">${variant.name}</div>
-                        <div style="color: #666; font-size: 12px; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${variant.description}</div>
-                        <div style="color: #d32f2f; font-weight: 600; font-size: 16px;">NT$ ${variant.price}</div>
+                    <div style="flex: 1; min-width: 0; overflow: hidden;">
+                        <div style="font-weight: 600; font-size: 13px; margin-bottom: 2px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${variant.name}</div>
+                        <div style="color: #d32f2f; font-weight: 600; font-size: 14px; white-space: nowrap;">NT$ ${variant.price}</div>
                     </div>
 
                     <!-- 右側：數量控制 -->
-                    <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;" onclick="event.stopPropagation();">
+                    <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;" onclick="event.stopPropagation();">
                         <button onclick="decreaseVariantQty(${variant.id})" style="
-                            width: 32px;
-                            height: 32px;
+                            width: 28px;
+                            height: 28px;
                             border: none;
                             background: #333;
                             color: white;
-                            border-radius: 5px;
+                            border-radius: 4px;
                             cursor: pointer;
-                            font-size: 18px;
+                            font-size: 16px;
                             font-weight: bold;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                         ">-</button>
                         <input type="number" id="variant-qty-${variant.id}" value="0" min="0" style="
-                            width: 50px;
+                            width: 40px;
                             text-align: center;
                             border: 1px solid #ddd;
-                            border-radius: 5px;
-                            padding: 6px 4px;
-                            font-size: 14px;
+                            border-radius: 4px;
+                            padding: 4px 2px;
+                            font-size: 13px;
                         " onclick="event.stopPropagation();">
                         <button onclick="increaseVariantQty(${variant.id})" style="
-                            width: 32px;
-                            height: 32px;
+                            width: 28px;
+                            height: 28px;
                             border: none;
                             background: #333;
                             color: white;
-                            border-radius: 5px;
+                            border-radius: 4px;
                             cursor: pointer;
-                            font-size: 18px;
+                            font-size: 16px;
                             font-weight: bold;
                             display: flex;
                             align-items: center;
@@ -2192,6 +2194,47 @@
             if (parseInt(input.value) > 0) {
                 input.value = parseInt(input.value) - 1;
             }
+        }
+
+        // 增加單一商品數量
+        function increaseSimpleQty() {
+            const input = document.getElementById('simpleProductQty');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        // 減少單一商品數量
+        function decreaseSimpleQty() {
+            const input = document.getElementById('simpleProductQty');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        // 將單一商品加入購物車
+        function addSimpleProductToCart() {
+            const qty = parseInt(document.getElementById('simpleProductQty').value);
+            if (qty < 1) {
+                alert('請選擇數量！');
+                return;
+            }
+
+            // 加入購物車
+            const existingItem = cart.find(item => item.id === currentProduct.id);
+            if (existingItem) {
+                existingItem.quantity += qty;
+            } else {
+                cart.push({
+                    id: currentProduct.id,
+                    name: currentProduct.name,
+                    price: currentProduct.price,
+                    quantity: qty,
+                    image: currentProduct.image
+                });
+            }
+
+            updateCartBadge();
+            alert(`已將 ${qty} 個 ${currentProduct.name} 加入購物車！`);
+            closeProductDetail();
         }
 
         // 切換到指定款式的圖片
@@ -2785,6 +2828,47 @@
                     <h4 style="margin: 20px 0 10px 0; font-size: 16px;">🛍️ 選擇款式</h4>
                     <div id="productVariantsList"></div>
                     <button class="add-to-cart" onclick="addVariantsToCart()" style="margin-top: 20px; width: 100%;">確認加入購物車</button>
+                </div>
+
+                <!-- 單一商品數量選擇區域（新加坡商品） -->
+                <div id="productSimpleSection" style="display: none;">
+                    <div style="margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+                        <h4 style="margin: 0 0 15px 0; font-size: 16px;">🛒 選擇數量</h4>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                            <button onclick="decreaseSimpleQty()" style="
+                                width: 40px;
+                                height: 40px;
+                                border: none;
+                                background: #333;
+                                color: white;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 20px;
+                                font-weight: bold;
+                            ">-</button>
+                            <input type="number" id="simpleProductQty" value="1" min="1" style="
+                                width: 80px;
+                                text-align: center;
+                                border: 2px solid #ddd;
+                                border-radius: 5px;
+                                padding: 10px;
+                                font-size: 18px;
+                                font-weight: 600;
+                            ">
+                            <button onclick="increaseSimpleQty()" style="
+                                width: 40px;
+                                height: 40px;
+                                border: none;
+                                background: #333;
+                                color: white;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 20px;
+                                font-weight: bold;
+                            ">+</button>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" onclick="addSimpleProductToCart()" style="margin-top: 10px; width: 100%;">加入購物車</button>
                 </div>
             </div>
         </div>
