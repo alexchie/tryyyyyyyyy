@@ -444,30 +444,24 @@
                 box-shadow: none;
             }
 
-            /* 導航選單 */
+            /* 導航選單 - 4*1 排列 */
             .nav-menu ul {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
             }
 
             .nav-menu li {
-                flex: 1 1 50%;
+                flex: 1 1 25%;
                 border-right: 1px solid #000;
-                border-bottom: 1px solid #000;
-            }
-
-            .nav-menu li:nth-child(2),
-            .nav-menu li:nth-child(4) {
-                border-right: none;
-            }
-
-            .nav-menu li:nth-child(3),
-            .nav-menu li:nth-child(4) {
                 border-bottom: none;
             }
 
+            .nav-menu li:last-child {
+                border-right: none;
+            }
+
             .nav-menu a {
-                font-size: 0.95em;
-                padding: 10px 15px;
+                font-size: 0.85em;
+                padding: 8px 10px;
             }
 
             /* 文字縮小 - Smaller text for mobile */
@@ -498,21 +492,21 @@
             /* 商品兩排 - 2-column product grid */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 4px;
+                gap: 2px;
                 margin-bottom: 20px;
             }
 
             .product-card {
-                padding: 8px;
+                padding: 6px;
                 border-radius: 0px;
             }
 
             .product-card img {
-                height: 140px;
+                height: 160px;
             }
 
             .product-image-wrapper {
-                margin-bottom: 6px;
+                margin-bottom: 5px;
                 border-radius: 0px;
             }
 
