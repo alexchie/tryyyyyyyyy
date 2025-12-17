@@ -444,6 +444,12 @@
                 box-shadow: none;
             }
 
+            /* 導航選單 - 修正邊距 */
+            .nav-menu {
+                margin: 0 -10px 20px -10px;
+                border-radius: 0;
+            }
+
             /* 導航選單 - 4*1 排列 */
             .nav-menu ul {
                 flex-wrap: nowrap;
@@ -463,8 +469,8 @@
             }
 
             .nav-menu a {
-                font-size: 0.75em;
-                padding: 10px 8px;
+                font-size: 0.9em;
+                padding: 12px 8px;
                 white-space: nowrap;
                 display: block;
             }
@@ -497,22 +503,23 @@
             /* 商品兩排 - 2-column product grid */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1px;
+                gap: 0px;
                 margin-bottom: 20px;
             }
 
             .product-card {
                 padding: 6px;
-                border-radius: 0px;
+                border-radius: 0px !important;
             }
 
             .product-card img {
                 height: 160px;
+                border-radius: 0px !important;
             }
 
             .product-image-wrapper {
                 margin-bottom: 5px;
-                border-radius: 0px;
+                border-radius: 0px !important;
             }
 
             .product-name {
@@ -2310,10 +2317,10 @@
                         </div>
                     `;
                 } else {
-                    // 一般商品：保留原有的數量選擇和加入購物車功能
+                    // 一般商品：整個卡片可點擊，需進入詳情頁才能加入購物車
                     return `
-                        <div class="product-card">
-                            <div class="product-image-wrapper" onclick="showProductDetail(${product.id})">
+                        <div class="product-card" onclick="showProductDetail(${product.id})" style="cursor: pointer;">
+                            <div class="product-image-wrapper">
                                 <img src="${product.image}" alt="${product.name}">
                                 <div class="product-image-overlay">
                                     <div class="product-image-overlay-text">🔍 點擊查看詳情</div>
@@ -2322,12 +2329,6 @@
                             <div class="product-name">${product.name}</div>
                             <div class="product-description">${product.description}</div>
                             <div class="product-price">NT$ ${product.price}</div>
-                            <div class="quantity-control">
-                                <button onclick="decreaseQty(${product.id})">-</button>
-                                <input type="number" id="qty-${product.id}" value="1" min="1">
-                                <button onclick="increaseQty(${product.id})">+</button>
-                            </div>
-                            <button class="add-to-cart" onclick="addToCart(${product.id})">加入購物車</button>
                         </div>
                     `;
                 }
