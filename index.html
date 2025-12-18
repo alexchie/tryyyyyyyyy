@@ -1572,6 +1572,7 @@
             <div id="cartItems"></div>
             <div class="total">
                 <div style="margin-bottom: 8px;">小計：NT$ <span id="subtotalPrice">0</span></div>
+                <div id="discountRow" style="margin-bottom: 8px; color: #d32f2f; display: none;">優惠折扣（9折）：-NT$ <span id="discountAmount">0</span></div>
                 <div style="margin-bottom: 8px;">運費：NT$ <span id="shippingFee">55</span> <span id="shippingNote" style="color: #666; font-size: 0.9em;"></span></div>
                 <div style="border-top: 2px solid #000; padding-top: 8px; font-size: 1.2em;">總計：NT$ <span id="totalPrice">0</span></div>
             </div>
@@ -1655,6 +1656,16 @@
                     <small style="color: #666; font-size: 0.9em;">如果知道門市代碼可以填寫，不知道可以留空</small>
                 </div>
 
+                <!-- 優惠碼輸入區域 -->
+                <div class="form-group" style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                    <label style="font-weight: 600; margin-bottom: 8px; display: block;">🎁 優惠碼（選填）</label>
+                    <div style="display: flex; gap: 10px; align-items: flex-start;">
+                        <input type="text" id="discountCodeInput" placeholder="請輸入優惠碼" style="flex: 1;">
+                        <button type="button" onclick="applyDiscountCode()" style="padding: 12px 20px; background: #000; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; white-space: nowrap;">套用</button>
+                    </div>
+                    <div id="discountMessage" style="margin-top: 8px; font-size: 0.9em;"></div>
+                </div>
+
                 <!-- 匯款資訊顯示 -->
                 <div style="background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); color: white; padding: 20px; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);">
                     <h3 style="margin: 0 0 15px 0; font-size: 1.2em; display: flex; align-items: center; color: white;">
@@ -1673,18 +1684,13 @@
                         </p>
                     </div>
                     <p style="margin: 15px 0 0 0; font-size: 0.9em; opacity: 0.9;">
-                        ⚠️ 請完成匯款後，將匯款證明截圖上傳至下方欄位
+                        ⚠️ 請完成匯款後，填寫下方匯款帳號後五碼
                     </p>
                 </div>
 
                 <div class="form-group">
                     <label>匯款帳號後五碼 *</label>
                     <input type="text" id="accountLast5" maxlength="5" required>
-                </div>
-                <div class="form-group">
-                    <label>匯款截圖 (選填)</label>
-                    <input type="file" id="paymentScreenshot" accept="image/*" style="padding: 10px;">
-                    <small style="color: #666; display: block; margin-top: 5px;">請上傳匯款證明截圖（支援 JPG、PNG 格式）</small>
                 </div>
                 <div class="form-group">
                     <label>備註</label>
@@ -2039,6 +2045,10 @@
         let currentCategory = 'all';
 
         let cart = [];
+
+        // 優惠碼系統
+        let discountCodes = ['DISCOUNT10', 'VIP2024', 'SAVE90', 'WELCOME9'];  // 可用的 9 折優惠碼
+        let appliedDiscountCode = null;  // 已套用的優惠碼
 
         function filterByCategory(category) {
             currentCategory = category;
@@ -2424,6 +2434,13 @@
 
         function openCart() {
             renderCart();
+            // 重置優惠碼輸入欄位（如果沒有套用優惠碼的話）
+            const discountInput = document.getElementById('discountCodeInput');
+            if (discountInput && !appliedDiscountCode) {
+                discountInput.disabled = false;
+                discountInput.value = '';
+                document.getElementById('discountMessage').innerHTML = '';
+            }
             document.getElementById('cartModal').style.display = 'block';
         }
 
@@ -2436,6 +2453,7 @@
             if (cart.length === 0) {
                 cartItemsDiv.innerHTML = '<p style="text-align: center; color: #999;">購物車是空的</p>';
                 document.getElementById('subtotalPrice').textContent = '0';
+                document.getElementById('discountRow').style.display = 'none';
                 document.getElementById('shippingFee').textContent = '55';
                 document.getElementById('shippingNote').textContent = '';
                 document.getElementById('totalPrice').textContent = '55';
@@ -2445,9 +2463,9 @@
             cartItemsDiv.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
                     <div class="cart-item-content">
-                        <img src="${item.image}" 
-                             alt="${item.name}" 
-                             class="cart-item-image" 
+                        <img src="${item.image}"
+                             alt="${item.name}"
+                             class="cart-item-image"
                              onclick="showProductDetail(${item.id})"
                              title="點擊查看商品詳情">
                         <div class="cart-item-info">
@@ -2461,12 +2479,24 @@
             `).join('');
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shippingFee = subtotal >= 600 ? 0 : 55;
-            const total = subtotal + shippingFee;
+
+            // 計算優惠折扣（如果有套用優惠碼）
+            let discount = 0;
+            if (appliedDiscountCode) {
+                discount = Math.round(subtotal * 0.1);  // 9折 = 減10%
+                document.getElementById('discountRow').style.display = 'block';
+                document.getElementById('discountAmount').textContent = discount;
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
+
+            const subtotalAfterDiscount = subtotal - discount;
+            const shippingFee = subtotalAfterDiscount >= 600 ? 0 : 55;
+            const total = subtotalAfterDiscount + shippingFee;
 
             document.getElementById('subtotalPrice').textContent = subtotal;
             document.getElementById('shippingFee').textContent = shippingFee;
-            document.getElementById('shippingNote').textContent = subtotal >= 600 ? '(滿600元免運)' : '(滿600免運費)';
+            document.getElementById('shippingNote').textContent = subtotalAfterDiscount >= 600 ? '(滿600元免運)' : '(滿600免運費)';
             document.getElementById('totalPrice').textContent = total;
         }
 
@@ -2474,6 +2504,29 @@
             cart.splice(index, 1);
             updateCartBadge();
             renderCart();
+        }
+
+        // 套用優惠碼功能
+        function applyDiscountCode() {
+            const input = document.getElementById('discountCodeInput');
+            const code = input.value.trim().toUpperCase();
+            const messageDiv = document.getElementById('discountMessage');
+
+            if (!code) {
+                messageDiv.innerHTML = '<span style="color: #d32f2f;">❌ 請輸入優惠碼</span>';
+                return;
+            }
+
+            // 檢查優惠碼是否有效
+            if (discountCodes.includes(code)) {
+                appliedDiscountCode = code;
+                messageDiv.innerHTML = '<span style="color: #2e7d32;">✅ 優惠碼套用成功！已享 9 折優惠</span>';
+                input.value = '';
+                input.disabled = true;
+                renderCart();  // 重新計算並顯示折扣
+            } else {
+                messageDiv.innerHTML = '<span style="color: #d32f2f;">❌ 優惠碼無效或已使用</span>';
+            }
         }
 
         // 複製銀行帳號功能
@@ -2587,7 +2640,6 @@
             const address = `${storeType}-${storeCity}-${storeName}${storeCode ? '-代碼' + storeCode : ''}`;
             const account = document.getElementById('accountLast5').value;
             const note = document.getElementById('orderNote').value;
-            const screenshotFile = document.getElementById('paymentScreenshot').files[0];
 
             if (!name || !phone || !email || !storeType || !storeCity || !storeName || !account) {
                 alert('請填寫所有必填欄位！');
@@ -2618,43 +2670,33 @@
             }
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shippingFee = subtotal >= 600 ? 0 : 55;
-            const total = subtotal + shippingFee;
+
+            // 計算優惠折扣
+            let discount = 0;
+            if (appliedDiscountCode) {
+                discount = Math.round(subtotal * 0.1);  // 9折 = 減10%
+            }
+
+            const subtotalAfterDiscount = subtotal - discount;
+            const shippingFee = subtotalAfterDiscount >= 600 ? 0 : 55;
+            const total = subtotalAfterDiscount + shippingFee;
             const orderTime = new Date().toLocaleString('zh-TW');
 
             // 合併姓名和匿名稱號
             const nameWithNickname = `${name}(${lineNickname})`;
-
-            // 顯示處理進度
-            document.getElementById('orderSummary').innerHTML = `
-                <div style="text-align: center; padding: 40px;">
-                    <div style="font-size: 3em;">📸</div>
-                    <h3>正在處理圖片...</h3>
-                    <p style="color: #666; margin-top: 10px;">請稍候，圖片壓縮中</p>
-                </div>
-            `;
-
-            // 如果有上傳截圖，則壓縮截圖（最大寬度1200px，品質0.7）
-            let screenshotBase64 = null;
-            let screenshotFilename = null;
-
-            if (screenshotFile) {
-                screenshotBase64 = await compressImage(screenshotFile, 1200, 0.7);
-                screenshotFilename = screenshotFile.name;
-                console.log('原始檔案大小:', screenshotFile.size, 'bytes');
-                console.log('壓縮後大小:', screenshotBase64.length, 'bytes');
-            }
 
             const orderData = {
                 orderTime,
                 customer: { name: nameWithNickname, phone, email, address, account },
                 items: cart,
                 subtotal,
+                discount,
+                discountCode: appliedDiscountCode || '無',
                 shippingFee,
                 total,
                 note,
-                paymentScreenshot: screenshotBase64,
-                screenshotFilename: screenshotFilename
+                paymentScreenshot: appliedDiscountCode || '無',  // 將優惠碼回傳到此欄位
+                screenshotFilename: null
             };
 
             // 更新為傳送狀態
@@ -2668,10 +2710,9 @@
 
             try {
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbyWPRhVC9RI2xmE8yLC1wAQi1bsMH2kpJPDPDD1AqTKRdjyHBuUjfQufeJzDmGoZfkJiQ/exec';
-                
+
                 console.log('準備送出訂單資料:', orderData);
-                console.log('截圖大小:', screenshotBase64.length, 'bytes');
-                
+
                 // 使用 fetch POST 方式傳送（支援大量資料）
                 const response = await fetch(scriptUrl, {
                     method: 'POST',
@@ -2700,10 +2741,14 @@
                         <p><strong>Email：</strong>${email || '未提供'}</p>
                         <p><strong>取貨門市：</strong>${storeCity} - ${storeName}</p>
                         <p><strong>匯款帳號後五碼：</strong>${account}</p>
+                        ${appliedDiscountCode ? `<p><strong>使用優惠碼：</strong>${appliedDiscountCode}</p>` : ''}
                         ${note ? `<p><strong>備註：</strong>${note}</p>` : ''}
                         <hr style="margin: 15px 0;">
                         <h4>商品清單：</h4>
                         ${cart.map(item => `<p>• ${item.name}(${item.description}) × ${item.quantity} = NT$ ${item.price * item.quantity}</p>`).join('')}
+                        <p style="margin-top: 10px;"><strong>小計：</strong>NT$ ${subtotal}</p>
+                        ${discount > 0 ? `<p style="color: #d32f2f;"><strong>優惠折扣（9折）：</strong>-NT$ ${discount}</p>` : ''}
+                        <p><strong>運費：</strong>NT$ ${shippingFee}</p>
                         <h3 style="color: #000000; margin-top: 15px;">總金額：NT$ ${total}</h3>
                         <p style="margin-top: 20px; color: #666; font-size: 0.9em;">📧 訂單確認信已寄送至您的信箱，請查收</p>
                     </div>
@@ -2713,6 +2758,16 @@
                 document.getElementById('cartItems').style.display = 'none';
                 document.querySelector('.form-section').style.display = 'none';
                 document.querySelector('.total').style.display = 'none';
+
+                // 如果有使用優惠碼，從清單中移除（防止重複使用）
+                if (appliedDiscountCode) {
+                    const codeIndex = discountCodes.indexOf(appliedDiscountCode);
+                    if (codeIndex > -1) {
+                        discountCodes.splice(codeIndex, 1);
+                        console.log(`優惠碼 ${appliedDiscountCode} 已使用並移除`);
+                    }
+                    appliedDiscountCode = null;  // 重置已套用的優惠碼
+                }
 
                 cart = [];
                 updateCartBadge();
