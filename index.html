@@ -2520,7 +2520,15 @@
             // 檢查優惠碼是否有效
             if (discountCodes.includes(code)) {
                 appliedDiscountCode = code;
-                messageDiv.innerHTML = '<span style="color: #2e7d32;">✅ 優惠碼套用成功！已享 9 折優惠</span>';
+
+                // 計算最終匯款金額
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const discount = Math.round(subtotal * 0.1);  // 9折 = 減10%
+                const subtotalAfterDiscount = subtotal - discount;
+                const shippingFee = subtotalAfterDiscount >= 600 ? 0 : 55;
+                const finalTotal = subtotalAfterDiscount + shippingFee;
+
+                messageDiv.innerHTML = `<span style="color: #2e7d32;">✅ 優惠碼套用成功！已享 9 折優惠<br>💰 最終匯款金額：NT$ ${finalTotal}<br><small>（上方已計算出最新價格）</small></span>`;
                 input.value = '';
                 input.disabled = true;
                 renderCart();  // 重新計算並顯示折扣
