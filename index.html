@@ -2704,7 +2704,7 @@
                 shippingFee,
                 total,
                 note,
-                paymentScreenshot: appliedDiscountCode || '無',  // 將優惠碼回傳到此欄位
+                paymentScreenshot: appliedDiscountCode ? `優惠碼:${appliedDiscountCode}` : '無優惠碼',  // 將優惠碼回傳到此欄位
                 screenshotFilename: null
             };
 
