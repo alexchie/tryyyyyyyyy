@@ -1518,11 +1518,10 @@
                     <div class="country-status">敬請期待</div>
                 </div>
 
-                <!-- 日本 - 即將推出 -->
-                <div class="country-card coming-soon">
-                    <span class="coming-soon-badge">即將推出</span>
+                <!-- 日本 - 當前可購買 -->
+                <div class="country-card" id="japan-card" onclick="selectCountry('japan')">
                     <div class="country-name">日本 🇯🇵</div>
-                    <div class="country-status">敬請期待</div>
+                    <div class="country-deadline">截止：2025/1/25</div>
                 </div>
             </div>
         </div>
@@ -1559,6 +1558,16 @@
                 <button onclick="filterByCategory('ducky-world')">Ducky World</button>
                 <button onclick="filterByCategory('too-cool-for-school')">Too cool for school</button>
                 <button onclick="filterByCategory('martin-kim')">Martin Kim</button>
+            </div>
+        </div>
+
+        <!-- 日本分類導航 -->
+        <div class="category-nav" id="japan-categories" style="display: none;">
+            <div>
+                <button class="active" onclick="filterByCategory('all')">全部商品</button>
+                <button onclick="filterByCategory('japan-cosmetics')">藥妝類</button>
+                <button onclick="filterByCategory('japan-food')">飲食類</button>
+                <button onclick="filterByCategory('japan-electronics')">電器類</button>
             </div>
         </div>
 
@@ -2040,9 +2049,88 @@
                         description: '粉嫩配色，少女最愛'
                     }
                 ]
+            },
+            // ========== 日本商品 - 藥妝類 ==========
+            {
+                id: 5001,
+                name: '興和 KOWA Q&P 夜間修復 睡前舒緩錠',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1KEKbtjRLmdu3wAAKxRp43zJrO3ckHoBa&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: '【夜間修復冠軍】 這款是專為忙碌現代人設計的「睡前舒緩錠」，利用夜間黃金修復時間，幫助身體深度放鬆，一覺醒來精力滿點！適合生活壓力大、追求高效休息的您！',
+                variants: [
+                    { id: 50011, name: '30 粒', price: 350, image: 'https://drive.google.com/thumbnail?id=1KEKbtjRLmdu3wAAKxRp43zJrO3ckHoBa&sz=w1000', description: '30日份' },
+                    { id: 50012, name: '60 粒', price: 550, image: 'https://drive.google.com/thumbnail?id=167t0zShwsBfrNAiVMU_zX5XNSyTn8eko&sz=w1000', description: '60日份' },
+                    { id: 50013, name: '120 粒', price: 750, image: 'https://drive.google.com/thumbnail?id=1iJMX_wuIuAtP7cvcqevJwMNrsECWxyoQ&sz=w1000', description: '120日份' }
+                ]
+            },
+            {
+                id: 5002,
+                name: '獅王 Pair Acne 淨痘化粧水',
+                price: 350,
+                description: '弱酸性淨痘水',
+                image: 'https://drive.google.com/thumbnail?id=155A56X13ACOTKGm8jY4wp9KD-hk1wmCt&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: '【淨痘神隊友】 日本獅王 Pair Acne 系列的明星商品！這款弱酸性、無色素的溫和化妝水，能有效調理肌膚油脂，收斂毛孔。是您的「速攻～淨痘の對策」，讓肌膚清爽不緊繃！'
+            },
+            {
+                id: 5003,
+                name: '獅王 PAIR ACNE 淨痘洗面乳',
+                price: 288,
+                description: '深層淨痘洗顏',
+                image: 'https://drive.google.com/thumbnail?id=1i4SnuWZjQjICNEk6ZLTG6Ej3tSrLTTYB&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: '【毛孔清道夫】 專為痘痘肌打造！細緻泡沫可深入毛孔，徹底洗淨多餘油脂和污垢，同時添加了殺菌消炎成分，能預防痘痘再生。洗後肌膚水潤不乾澀，是開啟淨痘旅程的第一步！'
+            },
+            {
+                id: 5004,
+                name: '獅王 Pair Acne 痘痘膏W',
+                price: 300,
+                description: '醫藥品級痘痘膏',
+                image: 'https://drive.google.com/thumbnail?id=1VSoH1DKiCWvf-4yikQpsR8bfx6sVRjN8&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: '【隱形抗痘救星】 日本家庭常備的醫藥品級痘痘膏！擁有消炎和殺菌雙重療效，能快速收斂紅腫痘痘。白色乳霜狀，塗抹後透明無色，可立即上妝，讓您輕鬆告別痘痘困擾！'
+            },
+            {
+                id: 5005,
+                name: 'DHC速攻藍莓',
+                price: 399,
+                description: '30日份 速攻藍莓',
+                image: 'https://drive.google.com/thumbnail?id=1KEKbtjRLmdu3wAAKxRp43zJrO3ckHoBa&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: '【3C重度使用者・酸澀救星】 專為長時間盯著電腦、手機的現代人打造！長時間用眼導致的酸澀、模糊、對焦困難，都需要這款「急救型」補給。除了高濃度的北歐野生藍莓萃取，更奢華添加了葉黃素、藏紅花酸與巴西莓。多重護眼配方能強力舒緩眼部疲勞，就像幫眼睛做了一場深層SPA，讓您的視野隨時保持高清HD狀態！'
+            },
+            {
+                id: 5006,
+                name: 'UHA 味覺糖 補鐵軟糖',
+                price: 280,
+                description: '30日份（60粒）',
+                image: 'https://drive.google.com/thumbnail?id=1KEKbtjRLmdu3wAAKxRp43zJrO3ckHoBa&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: 'UHA 味覺糖推出的補鐵軟糖，每日補充適量鐵質，幫助維持健康活力。'
+            },
+            {
+                id: 5007,
+                name: 'ELIXIR 怡麗絲爾',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1GfLs00Tcbaugz-_6aF5_OoagzM4jOqNK&sz=w1000',
+                category: 'japan-cosmetics',
+                country: 'japan',
+                detailedDescription: '熱賣NO.1經典款！一擦養成飽滿彈潤肌，超強防曬力同時注入膠原修護因子，是「上妝前的素顏神器」。',
+                variants: [
+                    { id: 50071, name: '小金管 彈潤多效美肌乳SP+', price: 700, image: 'https://drive.google.com/thumbnail?id=1GfLs00Tcbaugz-_6aF5_OoagzM4jOqNK&sz=w1000', description: '保濕、彈潤、高防曬 (SPF50+ PA++++)' },
+                    { id: 50072, name: '小銀管 淨白多效美肌乳WT+', price: 760, image: 'https://drive.google.com/thumbnail?id=1xANC1Umm2uLHw5mjG5eu4Hwjivau5Edm&sz=w1000', description: '美白淨斑、清爽控油 (SPF50+ PA++++)' },
+                    { id: 50073, name: '潤色小金管 膠原亮妍多效美肌乳PK', price: 800, image: 'https://drive.google.com/thumbnail?id=1OaMgrqFNpw_zZKj2MQ-x7brPSac2_mT9&sz=w1000', description: '潤色提亮、自然好氣色 (SPF50+ PA++++)' }
+                ]
             }
         ];
- 
+
         let currentCategory = 'all';
 
         let cart = [];
@@ -2857,6 +2945,7 @@
             // 隱藏所有分類導航
             document.getElementById('singapore-categories').style.display = 'none';
             document.getElementById('korea-categories').style.display = 'none';
+            document.getElementById('japan-categories').style.display = 'none';
 
             // 顯示對應國家的分類導航
             if (country === 'singapore') {
@@ -2865,6 +2954,9 @@
             } else if (country === 'korea') {
                 document.getElementById('korea-categories').style.display = 'block';
                 console.log('韓國代購服務開放中，截止日期：2025/1/20');
+            } else if (country === 'japan') {
+                document.getElementById('japan-categories').style.display = 'block';
+                console.log('日本代購服務開放中，截止日期：2025/1/25');
             }
 
             // 更新當前國家
