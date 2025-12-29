@@ -2380,16 +2380,23 @@
             // ========== 日本商品 - 電器類 ==========
             {
                 id: 7001,
-                name: 'Panasonic 美容棒',
-                description: '多款式可選',
+                name: 'Panasonic Vitalift RF EH-SR85',
+                price: 15999,
+                description: '時光逆轉光波美容儀',
                 image: 'https://drive.google.com/thumbnail?id=18laLqBFietSZbjjD26Y4Y5N7BL2UdSh-&sz=w1000',
                 category: 'japan-electronics',
                 country: 'japan',
-                detailedDescription: 'Panasonic Vitalift RF 美容儀器系列，採用先進的RF射頻技術，深度緊緻肌膚',
-                variants: [
-                    { id: 70011, name: 'Vitalift RF EH-SR85', price: 15999, image: 'https://drive.google.com/thumbnail?id=18laLqBFietSZbjjD26Y4Y5N7BL2UdSh-&sz=w1000', description: '【時光逆轉光波】 曾獲日本美妝大賞美容儀器部門獎項，採用先進的1MHz 射頻（RF）深度溫熱肌膚，促進膠原蛋白自生，搭配獨特的EMS 微電流，精準鍛鍊表情肌，達到深層緊緻、立體輪廓的效果！特別適合想初次嘗試旗艦級 RF 儀器，追求有效、穩定抗衰老護理的您。' },
-                    { id: 70012, name: 'Vitalift RF EH-SR86', price: 17999, image: 'https://drive.google.com/thumbnail?id=1TedukGD-vLyVZdV_OS02Zpv44OFl9IuV&sz=w1000', description: '【年度最強V臉神器】 在 SR85 的強大功能基礎上，通常代表著技術的微調升級與設計優化（如更舒適的握感、更精準的溫度控制或升級的 LED 波長）。它將 RF 溫熱與 EMS 提拉完美結合，目標是撫平細紋、改善法令紋，讓肌膚重現緊緻、彈潤的年輕狀態。追求最新技術和極致細節的您，絕不能錯過！' }
-                ]
+                detailedDescription: '【時光逆轉光波】 曾獲日本美妝大賞美容儀器部門獎項，採用先進的1MHz 射頻（RF）深度溫熱肌膚，促進膠原蛋白自生，搭配獨特的EMS 微電流，精準鍛鍊表情肌，達到深層緊緻、立體輪廓的效果！特別適合想初次嘗試旗艦級 RF 儀器，追求有效、穩定抗衰老護理的您。'
+            },
+            {
+                id: 7002,
+                name: 'Panasonic Vitalift RF EH-SR86',
+                price: 17999,
+                description: '年度最強V臉神器',
+                image: 'https://drive.google.com/thumbnail?id=1TedukGD-vLyVZdV_OS02Zpv44OFl9IuV&sz=w1000',
+                category: 'japan-electronics',
+                country: 'japan',
+                detailedDescription: '【年度最強V臉神器】 在 SR85 的強大功能基礎上，通常代表著技術的微調升級與設計優化（如更舒適的握感、更精準的溫度控制或升級的 LED 波長）。它將 RF 溫熱與 EMS 提拉完美結合，目標是撫平細紋、改善法令紋，讓肌膚重現緊緻、彈潤的年輕狀態。追求最新技術和極致細節的您，絕不能錯過！'
             }
         ];
 
@@ -2478,6 +2485,9 @@
 
             document.getElementById('productDetailModal').style.display = 'block';
             document.body.style.overflow = 'hidden'; // 防止背景滾動
+
+            // 初始化圖片滑動功能
+            initImageSwipe();
         }
 
         // 渲染款式列表
@@ -2641,6 +2651,38 @@
             dotsContainer.innerHTML = productImages.map((_, index) => `
                 <span class="image-dot ${index === currentImageIndex ? 'active' : ''}" onclick="switchToVariantImage(${index})"></span>
             `).join('');
+        }
+
+        // 圖片滑動功能
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function initImageSwipe() {
+            const imageElement = document.getElementById('productDetailImage');
+
+            imageElement.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            imageElement.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // 最小滑動距離
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // 向左滑動，顯示下一張
+                    nextImage();
+                } else {
+                    // 向右滑動，顯示上一張
+                    previousImage();
+                }
+            }
         }
 
         // 將選中的款式加入購物車
@@ -3184,12 +3226,12 @@
         // 頁面載入和視窗大小改變時更新路徑
         window.addEventListener('load', initAirplaneAnimation);
         window.addEventListener('load', function() {
-            selectCountry('singapore');
+            selectCountry('japan');
         });
         window.addEventListener('resize', initAirplaneAnimation);
 
         // 當前選擇的國家
-        let currentCountry = 'singapore';
+        let currentCountry = 'japan';
 
         // 國家選擇功能
         function selectCountry(country) {
