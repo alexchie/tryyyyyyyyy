@@ -1718,41 +1718,173 @@
 
     <script>
         let products = [
-            { id: 1, name: '[新加坡] TWG 奶韻烏龍茶包', price: 900, description: '盒裝 15入', image: 'https://drive.google.com/thumbnail?id=14l7l-41wt5heKdPW4UFH8QcV9qBvptZf&sz=w1000', category: 'twg-tea', country: 'singapore', detailedDescription: '台灣烏龍茶為基底的奶香午茶，尾調帶有一點花香喝起來順口，是一款最貼近台灣人口味的TWG茶'  },
-            { id: 2, name: '[新加坡] TWG 獅城早餐茶包', price: 900, description: '盒裝 15入', image: 'https://drive.google.com/thumbnail?id=1frkWsCOy8QHd20-7Psjtd7Ji3kRpAvjd&sz=w1000', category: 'twg-tea', country: 'singapore', detailedDescription: '口感偏濃厚的紅茶混合茶，以新加坡為靈感，有很厚實的南洋茶味，帶一點焦糖跟麥穗的香味，是一款適合提神的早茶'  },
-            { id: 3, name: '[新加坡] TWG 特威經典茶包', price: 900, description: '盒裝 15入', image: 'https://drive.google.com/thumbnail?id=1yhefmyDqMeYh94kAOsMweRcGkIHXs6MV&sz=w1000', category: 'twg-tea', country: 'singapore', detailedDescription: 'TWG 的代表性紅茶，帶有果香和花香調，香氣圓潤溫和，適合初次皆觸TWG的人'  },
-            { id: 4, name: '[新加坡] TWG 經典組合', price: 900, description: '英國早餐茶、法式伯爵茶、洋甘菊茶盒裝 15入 (各5入)', image: 'https://drive.google.com/thumbnail?id=19IdsZN5fcf--8sznQX5nHgV8ZVy5LdWK&sz=w1000', category: 'twg-tea', country: 'singapore', detailedDescription: '可以一次收齊三款TWG的經典風味茶：<br>英國早餐茶 - 濃郁系紅茶，很適合加牛奶調成早餐奶茶<br>法式伯爵茶 - 加入佛手柑與花瓣帶出明亮果香，是偏清新酸甜味的南法果茶<br>洋甘菊茶 - 無咖啡因草本茶，最適合放松助眠，香氣柔和，適合冷冷的秋冬天夜晚'  },
-            { id: 5, name: '[新加坡] TWG 茶葉五組禮品盒', price: 5000, description: '盒裝 5罐', image: 'https://drive.google.com/thumbnail?id=18vwo94GGu3LzIR5H9AXJGpCTVZVEbmG8&sz=w1000', category: 'twg-tea', country: 'singapore', detailedDescription: 'TWG 的五組禮品盒集結品牌多款人氣茶葉，從濃郁到清香一次收齊。每款茶都有獨立小罐，包裝典雅，拆開時就像開小型茶香收藏盒。<br>不論是自己想換著喝、找出最喜歡的茶風味，或是想送一份不失手的質感禮物，這款組合都很合適。沖泡簡單、香氣穩定，是想認識 TWG 茶款的最佳入門組。' },
-            { id: 6, name: '[新加坡] TWG Teasticks 糖棒', price: 180, description: '4根入', image: 'https://drive.google.com/thumbnail?id=1-lunyL7C_3ooAaTG-n-ksshjvmTRp1sM&sz=w1000', category: 'twg-dessert', country: 'singapore', detailedDescription: 'TWG的隱藏版小眾商品 – 糖棒！小小一根幫你的茶加點味道，糖棒形調味讓填度慢慢釋放，就算放著當裝飾也很好看，顏值跟品質都在線'  },
-            { id: 7, name: '[新加坡] TWG 小熊茶香軟糖 - 草莓茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1vtkI5z162RazTMe81O8PGxP6GMbHEVn4&sz=w1000', category: 'twg-dessert', country: 'singapore', detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～'  },
-            { id: 8, name: '[新加坡] TWG 小熊茶香軟糖 - 覆盆子與香草茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1AL3ChRznx9Q9s72HMN0MhTaDFFL9Oc9n&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～'  },
-            { id: 9, name: '[新加坡] TWG 小熊茶香軟糖 - 西柚橙茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1sxuIwlnoR7IG8RDaFOh3qSaF-mMcyyoL&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～'  },
-            { id: 10, name: '[新加坡] TWG 小熊茶香軟糖 - 芒果橙茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1OgTCFKItMzoPmHz26Qqb79cqzcFeFE_5&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～'  },
-            { id: 11, name: '[新加坡] TWG 小熊茶香軟糖 - 薑汁檸檬茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=18VK7Ad0PMjQFMewq5UZyPuNJrHqYETLC&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～' },
-            { id: 12, name: '[新加坡] TWG 小熊茶香軟糖 - 橙香肉桂茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1q34TV7wrEg1e2HKCM2w9QqEtznhSn6F2&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～' },
-            { id: 13, name: '[新加坡] TWG 小熊茶香軟糖 - 藍莓茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1bWT0aX1Zd3a8DMbzwBakdhlntHWo7mh2&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～'  },
-            { id: 14, name: '[新加坡] TWG 小熊茶香軟糖 - 蘋果與葡萄茶', price: 550, description: '罐裝(200g)', image: 'https://drive.google.com/thumbnail?id=1hqzCV6hBNVmIVzidQ7p7-CS5Ld1dMYfT&sz=w1000', category: 'twg-dessert', country: 'singapore' , detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～' },
-            { id: 15, name: '[新加坡] 百勝廚叻沙泡麵', price: 350, description: '4包入', image: 'https://drive.google.com/thumbnail?id=1wPMFdpAdLtA-hJu1kYT5-jA42B3dUBby&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '世界冠軍的百勝廚泡麵這次幫大家挑了三個最受歡迎口味 - 叻沙、蝦湯跟辣螃蟹泡麵。叻沙是人氣最高的口味，湯是乳白色的那種超濃郁系，蠟油的香氣很香但不辣，怕辣的人也完全可以吃，麵體不是油炸的，口感介於拉麵跟烏龍麵之間的QQ麵體，加一些青菜跟蝦仁再打一顆蛋完全是超爽的一餐，叻沙味道還原度超高，跟當地吃的味道可以說90%像，好吃程度每次都會不知不覺把湯喝乾淨的那種! 很推完全是必入款'  },
-            { id: 16, name: '[新加坡] 百勝廚蝦湯泡麵', price: 350, description: '4包入', image: 'https://drive.google.com/thumbnail?id=1ZVJNsOE3lil-OAweebpFyOdRkliRZzxb&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '蝦麵也是南洋色小吃之一，比較小眾但絕對是被低估的選手! 蝦湯泡麵走一個鮮味路線，比叻沙泡麵口味再重一點點，辣度跟叻沙差不多可能再辣一點點點，超級適合冷冷的冬天吃，蝦香味有帶一點咖哩跟椰奶的濃郁感，是直接被香到醒過來的程度，特別適合加魚丸還有吸湯的青菜一起吃，滿口都是蝦蝦蝦蝦蝦，跟叻沙口味完全有得比，推推！'  },
-            { id: 17, name: '[新加坡] 百勝廚辣螃蟹泡麵', price: 350, description: '4包入', image: 'https://drive.google.com/thumbnail?id=1GDL6BTA1sX1A0szlpFxON4bWnTgiZaws&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '辣螃蟹泡麵是偏清澈感的辣湯麵，辣度偏高，大概介在小辣到中辣之間，調理包很簡單只有一包蟹黃醬，可以吃到滿滿的蟹黃碎碎（完全是靈魂！）可以做成湯的跟乾的，大家完全可以試試看炒辣螃蟹泡麵加奶油跟起司，你就會獲得超香又濃郁的南洋奶油螃蟹炒麵，喜歡清爽口味或濃郁系的都可以入，做什麼變化都100分🤌🏻'  },
-            { id: 18, name: '[新加坡] IRVINS 鹹蛋泡麵', price: 275, description: '5包入', image: 'https://drive.google.com/thumbnail?id=125700upQGXoG4Pnzk5Zub43wO3R1Yht-&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: 'IRVINS家的鹹蛋黃產品永遠悍在新加坡必吃必買榜上，如果覺得鹹蛋黃魚皮太貴但又真的很想吃的人，超級推薦這款鹹蛋黃泡麵！除了跟鹹蛋黃魚皮一樣涮嘴的味道之外，泡麵的蛋黃香更濃，而且醬給的超級夠，每一根麵都能裹滿鹹蛋黃醬，鹹但不會死鹹，根本是新加坡鹹蛋黃界最權威的存在，推到不能再推，很適合台灣人的口味'  },
-            { id: 19, name: '[新加坡] IRVINS 魚皮（小包 95g)', price: 270, description: '1包', image: 'https://drive.google.com/thumbnail?id=14AlKpwF0s5piopxZBkdhTL2vhpvDclPO&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: 'IRVINS魚皮的受歡迎程度完全是店家擺一整面牆給你買的程度，如果說韓國最強零食是那個全口味杏仁果，那新加坡就一定是IRVINS 魚皮。但它也號稱零食界的愛馬仕，貴也是確實挺貴，但真的很值得買一兩包回家慢慢配酒吃，是我們吃過還會遺憾怎麼沒有多買一點點的味道，出去玩拿出來完全是三兩下就被掃光，驚艷所有人的存在'  },
-            { id: 20, name: '[新加坡] IRVINS 魚皮（大包 230g）', price: 530, description: '1包', image: 'https://drive.google.com/thumbnail?id=19_kPfhQxPzzgK6l_IDyjTJm8eVib8PG2&sz=w1000', category: 'snacks', country: 'singapore' , detailedDescription: 'IRVINS魚皮的受歡迎程度完全是店家擺一整面牆給你買的程度，如果說韓國最強零食是那個全口味杏仁果，那新加坡就一定是IRVINS 魚皮。但它也號稱零食界的愛馬仕，貴也是確實挺貴，但真的很值得買一兩包回家慢慢配酒吃，是我們吃過還會遺憾怎麼沒有多買一點點的味道，出去玩拿出來完全是三兩下就被掃光，驚艷所有人的存在🫵🏻'},
-            { id: 21, name: '[新加坡] 328 加東叻沙泡麵', price: 280, description: '5包入', image: 'https://drive.google.com/thumbnail?id=1N59SmB0QxaHwUq1-UQ5403qUifktFV55&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '328加東叻沙是新加坡比較老牌的叻沙泡麵，有點像是台灣的統一肉臊麵的地位，作為百勝廚叻沙麵的平替款，基本上就是很基本的平民美味。但328在各個網站的評價絕對不輸百勝廚！搜叻沙泡麵有百勝廚就一定也有它！跟百勝廚可以比拼的味道連我們都想買來試試看'  },
-            { id: 22, name: '[新加坡] 珍寶泡麵', price: 280, description: '5包入', image: 'https://drive.google.com/thumbnail?id=1Z6Eq62SzJ_76Af3uUk0vhS-YKd0OKHjs&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '珍寶泡麵就是新加坡超有名的珍寶海鮮坊出的泡麵款，聽起來很像新加坡泡麵愛馬仕但其實高貴不貴，吃不起珍寶海鮮但一定吃得起珍寶海鮮泡麵，這也是新加坡的老牌泡麵了，受歡迎程度大概在全網第三，新加坡的朋都推薦一定要吃吃看（非常好奇'  },
-            { id: 23, name: '[新加坡] 亞坤醬（咖椰）', price: 280, description: '罐裝', image: 'https://drive.google.com/thumbnail?id=1r47HSEvHbqt1hq7r1-yk41nlN4KOq0Ri&sz=w1000', category: 'condiments', country: 'singapore' , detailedDescription: '亞坤在新加坡是很有名的早餐店，咖椰吐司這個品向大家一定也不陌生，這次選了亞坤的咖椰醬，有濃濃的椰香跟蛋香，甜度比較高一點，可以直接在家享受飛到新加坡吃亞坤的感覺！'},
-            { id: 24, name: '[新加坡] 亞坤醬（豐一咖椰）', price: 150, description: '罐裝', image: 'https://drive.google.com/thumbnail?id=1zKhdXf7IHfL3nLUacjCEvs5Pg3cjLteE&sz=w1000', category: 'condiments', country: 'singapore' , detailedDescription: '豐一咖椰醬是亞坤醬的平替版，味道比較柔和，也帶一點點清新的香蘭葉香氣，適合早餐搭配吐司或餅乾，很適合不喜歡吃太甜，還有喜歡香蘭葉香氣的人！'},
-            { id: 25, name: '[新加坡] 松發肉骨茶調理包（袋裝）', price: 69, description: '1包入', image: 'https://drive.google.com/thumbnail?id=1_g9dsgrpZu7yDx6pINeHiucpwayWXtC2&sz=w1000', category: 'condiments', country: 'singapore' , detailedDescription: '松發肉骨茶大家一定也多少有聽過~ 是新加坡的連鎖肉骨茶品牌，它的湯頭是胡椒香料派，相較馬來西亞是藥膳黑湯，新加坡的肉骨茶多是白湯的風味。調理包分成袋裝跟盒裝，很適合現在冷冷的冬天，就算不放排骨直接拿來煮麵或煮火鍋都非常棒！'},
-            { id: 26, name: '[新加坡] 松發肉骨茶調理包（盒裝）', price: 680, description: '10包入', image: 'https://drive.google.com/thumbnail?id=17hLQXNY9AP5PIwVaj-KzuZSwXGkHQUOP&sz=w1000', category: 'condiments', country: 'singapore' , detailedDescription: '松發肉骨茶大家一定也多少有聽過~ 是新加坡的連鎖肉骨茶品牌，它的湯頭是胡椒香料派，相較馬來西亞是藥膳黑湯，新加坡的肉骨茶多是白湯的風味。調理包分成袋裝跟盒裝，很適合現在冷冷的冬天，就算不放排骨直接拿來煮麵或煮火鍋都非常棒！'},
-            { id: 27, name: '[新加坡] Kims Duet 濾包式經典黑咖啡', price: 350, description: '5包入', image: 'https://drive.google.com/thumbnail?id=16f0YLekgLcN738vz8ICIklnzGOuOH3qT&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim’s Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim’s Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
-            { id: 28, name: '[新加坡] Kims Duet 新加坡濾包式南洋四口味組合', price: 500, description: '8包入', image: 'https://drive.google.com/thumbnail?id=1oqZMtMjFWbosTHDMGWlT6icul28FswCp&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim’s Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim’s Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
-            { id: 29, name: '[新加坡] Kims Duet 深焙膠囊咖啡', price: 450, description: '10入', image: 'https://drive.google.com/thumbnail?id=1To_5YSr1NV4NO02yZRdbBBvEd7Zx85MM&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim’s Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim’s Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
-            { id: 30, name: '[新加坡] Kims Duet 濾包式奶咖', price: 550, description: '15入', image: 'https://drive.google.com/thumbnail?id=1psstQ6x9TTc1XjbaX2756RRNWSTSl9Lr&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim’s Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim’s Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
-            { id: 31, name: '[新加坡] Kims Duet 濾包式經典口味三入組', price: 750, description: '15入', image: 'https://drive.google.com/thumbnail?id=1zEKYdnDTo-ZR_tjIaNYVnYkgCCpZsh5h&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim’s Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim’s Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
-            { id: 32, name: '[新加坡] 金鴨 辣椒蟹天婦羅紫菜', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '辣椒蟹天婦羅紫菜運用蟹肉、咖哩葉、辣椒等多種原材製作，香脆微辣的口感吃起來超過癮，喜歡辣味零食的朋友們千萬別錯過！'},
-            { id: 33, name: '[新加坡] 金鴨 鹹蛋黃蟹天婦羅紫菜', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1co2bGsvkxK3n7L2zvI1ijo_u29xRg0VJ&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '鹹蛋黃蟹天婦羅紫菜將香濃鹹蛋黃和蟹肉結合，再加上炸得香脆的紫菜解膩，入口有濃郁的海鮮風味，非常適合作為下酒菜。'},
-            { id: 34, name: '[新加坡] 金鴨 鹹蛋黃炸魚皮', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1LORX9kXDnBwe4Wolc99KNHjrGPET-sPm&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '金鴨鹹蛋黃炸魚皮，酥脆可口，鹹蛋黃風味濃郁，是新加坡國民零食！'},
-            { id: 35, name: '[新加坡] 金鴨 鹹蛋黃鹹薯片', price: 299, description: '102g', image: 'https://drive.google.com/thumbnail?id=1Yaa4KOBWPtYOcJkqgqNB92ni1ELBRa0G&sz=w1000', category: 'snacks', country: 'singapore', detailedDescription: '金鴨鹹蛋黃鹹薯片，薯片香脆，搭配濃郁的鹹蛋黃醬，一吃就停不下來的美味！'},
+            {
+                id: 1,
+                name: 'TWG 茶包',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=14l7l-41wt5heKdPW4UFH8QcV9qBvptZf&sz=w1000',
+                category: 'twg-tea',
+                country: 'singapore',
+                detailedDescription: 'TWG 精選茶包系列，集結品牌經典風味，從濃郁到清新一應俱全，每款茶都有獨特香氣與風味。',
+                variants: [
+                    { id: 101, name: '奶韻烏龍茶包', price: 900, image: 'https://drive.google.com/thumbnail?id=14l7l-41wt5heKdPW4UFH8QcV9qBvptZf&sz=w1000', description: '台灣烏龍茶為基底的奶香午茶，尾調帶有一點花香喝起來順口，是一款最貼近台灣人口味的TWG茶' },
+                    { id: 102, name: '獅城早餐茶包', price: 900, image: 'https://drive.google.com/thumbnail?id=1frkWsCOy8QHd20-7Psjtd7Ji3kRpAvjd&sz=w1000', description: '口感偏濃厚的紅茶混合茶，以新加坡為靈感，有很厚實的南洋茶味，帶一點焦糖跟麥穗的香味，是一款適合提神的早茶' },
+                    { id: 103, name: '特威經典茶包', price: 900, image: 'https://drive.google.com/thumbnail?id=1yhefmyDqMeYh94kAOsMweRcGkIHXs6MV&sz=w1000', description: 'TWG 的代表性紅茶，帶有果香和花香調，香氣圓潤溫和，適合初次皆觸TWG的人' },
+                    { id: 104, name: '經典組合', price: 900, image: 'https://drive.google.com/thumbnail?id=19IdsZN5fcf--8sznQX5nHgV8ZVy5LdWK&sz=w1000', description: '可以一次收齊三款TWG的經典風味茶：英國早餐茶、法式伯爵茶、洋甘菊茶（各5入）' }
+                ]
+            },
+            { id: 5, name: 'TWG 茶葉五組禮品盒', price: 5000, description: '盒裝 5罐', image: 'https://drive.google.com/thumbnail?id=18vwo94GGu3LzIR5H9AXJGpCTVZVEbmG8&sz=w1000', category: 'twg-tea', country: 'singapore', detailedDescription: 'TWG 的五組禮品盒集結品牌多款人氣茶葉，從濃郁到清香一次收齊。每款茶都有獨立小罐，包裝典雅，拆開時就像開小型茶香收藏盒。<br>不論是自己想換著喝、找出最喜歡的茶風味，或是想送一份不失手的質感禮物，這款組合都很合適。沖泡簡單、香氣穩定，是想認識 TWG 茶款的最佳入門組。' },
+            { id: 6, name: 'TWG Teasticks 糖棒', price: 180, description: '4根入', image: 'https://drive.google.com/thumbnail?id=1-lunyL7C_3ooAaTG-n-ksshjvmTRp1sM&sz=w1000', category: 'twg-dessert', country: 'singapore', detailedDescription: 'TWG的隱藏版小眾商品 – 糖棒！小小一根幫你的茶加點味道，糖棒形調味讓填度慢慢釋放，就算放著當裝飾也很好看，顏值跟品質都在線'  },
+            {
+                id: 7,
+                name: 'TWG 小熊茶香軟糖',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1vtkI5z162RazTMe81O8PGxP6GMbHEVn4&sz=w1000',
+                category: 'twg-dessert',
+                country: 'singapore',
+                detailedDescription: '小熊茶糖系列是TWG最新的高顏值明星產品，剛進駐台灣超多人搶購直接秒殺，到現在台灣只剩 4 個口味，網購的價格直接被炒到 900+可見他受歡迎的程度⋯這次直接開放全 8 種口味代購！一顆小熊可以直接吃或是泡在水/茶裡變成豐富口味的果茶，讓你點滿日常儀式感～',
+                variants: [
+                    { id: 701, name: '草莓茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1vtkI5z162RazTMe81O8PGxP6GMbHEVn4&sz=w1000', description: '罐裝(200g)' },
+                    { id: 702, name: '覆盆子與香草茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1AL3ChRznx9Q9s72HMN0MhTaDFFL9Oc9n&sz=w1000', description: '罐裝(200g)' },
+                    { id: 703, name: '西柚橙茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1sxuIwlnoR7IG8RDaFOh3qSaF-mMcyyoL&sz=w1000', description: '罐裝(200g)' },
+                    { id: 704, name: '芒果橙茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1OgTCFKItMzoPmHz26Qqb79cqzcFeFE_5&sz=w1000', description: '罐裝(200g)' },
+                    { id: 705, name: '薑汁檸檬茶', price: 550, image: 'https://drive.google.com/thumbnail?id=18VK7Ad0PMjQFMewq5UZyPuNJrHqYETLC&sz=w1000', description: '罐裝(200g)' },
+                    { id: 706, name: '橙香肉桂茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1q34TV7wrEg1e2HKCM2w9QqEtznhSn6F2&sz=w1000', description: '罐裝(200g)' },
+                    { id: 707, name: '藍莓茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1bWT0aX1Zd3a8DMbzwBakdhlntHWo7mh2&sz=w1000', description: '罐裝(200g)' },
+                    { id: 708, name: '蘋果與葡萄茶', price: 550, image: 'https://drive.google.com/thumbnail?id=1hqzCV6hBNVmIVzidQ7p7-CS5Ld1dMYfT&sz=w1000', description: '罐裝(200g)' }
+                ]
+            },
+            {
+                id: 15,
+                name: '百勝廚 泡麵',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1wPMFdpAdLtA-hJu1kYT5-jA42B3dUBby&sz=w1000',
+                category: 'noodles',
+                country: 'singapore',
+                detailedDescription: '世界冠軍的百勝廚泡麵這次幫大家挑了三個最受歡迎口味 - 叻沙、蝦湯跟辣螃蟹泡麵。麵體不是油炸的，口感介於拉麵跟烏龍麵之間的QQ麵體，每種口味都有獨特的南洋風味。',
+                variants: [
+                    {
+                        id: 1501,
+                        name: '叻沙泡麵',
+                        price: 350,
+                        image: 'https://drive.google.com/thumbnail?id=1wPMFdpAdLtA-hJu1kYT5-jA42B3dUBby&sz=w1000',
+                        description: '4包入 - 叻沙是人氣最高的口味，湯是乳白色的那種超濃郁系，蠟油的香氣很香但不辣，怕辣的人也完全可以吃，加一些青菜跟蝦仁再打一顆蛋完全是超爽的一餐，叻沙味道還原度超高，跟當地吃的味道可以說90%像，好吃程度每次都會不知不覺把湯喝乾淨的那種! 很推完全是必入款'
+                    },
+                    {
+                        id: 1502,
+                        name: '蝦湯泡麵',
+                        price: 350,
+                        image: 'https://drive.google.com/thumbnail?id=1ZVJNsOE3lil-OAweebpFyOdRkliRZzxb&sz=w1000',
+                        description: '4包入 - 蝦麵也是南洋色小吃之一，比較小眾但絕對是被低估的選手! 蝦湯泡麵走一個鮮味路線，比叻沙泡麵口味再重一點點，辣度跟叻沙差不多可能再辣一點點點，超級適合冷冷的冬天吃，蝦香味有帶一點咖哩跟椰奶的濃郁感，是直接被香到醒過來的程度，特別適合加魚丸還有吸湯的青菜一起吃，滿口都是蝦蝦蝦蝦蝦，跟叻沙口味完全有得比，推推！'
+                    },
+                    {
+                        id: 1503,
+                        name: '辣螃蟹泡麵',
+                        price: 350,
+                        image: 'https://drive.google.com/thumbnail?id=1GDL6BTA1sX1A0szlpFxON4bWnTgiZaws&sz=w1000',
+                        description: '4包入 - 辣螃蟹泡麵是偏清澈感的辣湯麵，辣度偏高，大概介在小辣到中辣之間，調理包很簡單只有一包蟹黃醬，可以吃到滿滿的蟹黃碎碎（完全是靈魂！）可以做成湯的跟乾的，大家完全可以試試看炒辣螃蟹泡麵加奶油跟起司，你就會獲得超香又濃郁的南洋奶油螃蟹炒麵，喜歡清爽口味或濃郁系的都可以入，做什麼變化都100分🤌🏻'
+                    }
+                ]
+            },
+            { id: 18, name: 'IRVINS 鹹蛋泡麵', price: 275, description: '5包入', image: 'https://drive.google.com/thumbnail?id=125700upQGXoG4Pnzk5Zub43wO3R1Yht-&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: 'IRVINS家的鹹蛋黃產品永遠悍在新加坡必吃必買榜上，如果覺得鹹蛋黃魚皮太貴但又真的很想吃的人，超級推薦這款鹹蛋黃泡麵！除了跟鹹蛋黃魚皮一樣涮嘴的味道之外，泡麵的蛋黃香更濃，而且醬給的超級夠，每一根麵都能裹滿鹹蛋黃醬，鹹但不會死鹹，根本是新加坡鹹蛋黃界最權威的存在，推到不能再推，很適合台灣人的口味'  },
+            {
+                id: 19,
+                name: 'IRVINS 魚皮',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=14AlKpwF0s5piopxZBkdhTL2vhpvDclPO&sz=w1000',
+                category: 'snacks',
+                country: 'singapore',
+                detailedDescription: 'IRVINS魚皮的受歡迎程度完全是店家擺一整面牆給你買的程度，如果說韓國最強零食是那個全口味杏仁果，那新加坡就一定是IRVINS 魚皮。但它也號稱零食界的愛馬仕，貴也是確實挺貴，但真的很值得買一兩包回家慢慢配酒吃，是我們吃過還會遺憾怎麼沒有多買一點點的味道，出去玩拿出來完全是三兩下就被掃光，驚艷所有人的存在。',
+                variants: [
+                    {
+                        id: 1901,
+                        name: '小包 95g',
+                        price: 270,
+                        image: 'https://drive.google.com/thumbnail?id=14AlKpwF0s5piopxZBkdhTL2vhpvDclPO&sz=w1000',
+                        description: '1包'
+                    },
+                    {
+                        id: 1902,
+                        name: '大包 230g',
+                        price: 530,
+                        image: 'https://drive.google.com/thumbnail?id=19_kPfhQxPzzgK6l_IDyjTJm8eVib8PG2&sz=w1000',
+                        description: '1包'
+                    }
+                ]
+            },
+            { id: 21, name: '328 加東叻沙泡麵', price: 280, description: '5包入', image: 'https://drive.google.com/thumbnail?id=1N59SmB0QxaHwUq1-UQ5403qUifktFV55&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '328加東叻沙是新加坡比較老牌的叻沙泡麵，有點像是台灣的統一肉臊麵的地位，作為百勝廚叻沙麵的平替款，基本上就是很基本的平民美味。但328在各個網站的評價絕對不輸百勝廚！搜叻沙泡麵有百勝廚就一定也有它！跟百勝廚可以比拼的味道連我們都想買來試試看'  },
+            { id: 22, name: '珍寶泡麵', price: 280, description: '5包入', image: 'https://drive.google.com/thumbnail?id=1Z6Eq62SzJ_76Af3uUk0vhS-YKd0OKHjs&sz=w1000', category: 'noodles', country: 'singapore', detailedDescription: '珍寶泡麵就是新加坡超有名的珍寶海鮮坊出的泡麵款，聽起來很像新加坡泡麵愛馬仕但其實高貴不貴，吃不起珍寶海鮮但一定吃得起珍寶海鮮泡麵，這也是新加坡的老牌泡麵了，受歡迎程度大概在全網第三，新加坡的朋都推薦一定要吃吃看（非常好奇'  },
+            { id: 23, name: '亞坤醬（咖椰）', price: 280, description: '罐裝', image: 'https://drive.google.com/thumbnail?id=1r47HSEvHbqt1hq7r1-yk41nlN4KOq0Ri&sz=w1000', category: 'condiments', country: 'singapore' , detailedDescription: '亞坤在新加坡是很有名的早餐店，咖椰吐司這個品向大家一定也不陌生，這次選了亞坤的咖椰醬，有濃濃的椰香跟蛋香，甜度比較高一點，可以直接在家享受飛到新加坡吃亞坤的感覺！'},
+            { id: 24, name: '亞坤醬（豐一咖椰）', price: 150, description: '罐裝', image: 'https://drive.google.com/thumbnail?id=1zKhdXf7IHfL3nLUacjCEvs5Pg3cjLteE&sz=w1000', category: 'condiments', country: 'singapore' , detailedDescription: '豐一咖椰醬是亞坤醬的平替版，味道比較柔和，也帶一點點清新的香蘭葉香氣，適合早餐搭配吐司或餅乾，很適合不喜歡吃太甜，還有喜歡香蘭葉香氣的人！'},
+            {
+                id: 25,
+                name: '松發肉骨茶調理包',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1_g9dsgrpZu7yDx6pINeHiucpwayWXtC2&sz=w1000',
+                category: 'condiments',
+                country: 'singapore',
+                detailedDescription: '松發肉骨茶大家一定也多少有聽過~ 是新加坡的連鎖肉骨茶品牌，它的湯頭是胡椒香料派，相較馬來西亞是藥膳黑湯，新加坡的肉骨茶多是白湯的風味。調理包分成袋裝跟盒裝，很適合現在冷冷的冬天，就算不放排骨直接拿來煮麵或煮火鍋都非常棒！',
+                variants: [
+                    {
+                        id: 2501,
+                        name: '袋裝',
+                        price: 69,
+                        image: 'https://drive.google.com/thumbnail?id=1_g9dsgrpZu7yDx6pINeHiucpwayWXtC2&sz=w1000',
+                        description: '1包入'
+                    },
+                    {
+                        id: 2502,
+                        name: '盒裝',
+                        price: 680,
+                        image: 'https://drive.google.com/thumbnail?id=17hLQXNY9AP5PIwVaj-KzuZSwXGkHQUOP&sz=w1000',
+                        description: '10包入'
+                    }
+                ]
+            },
+            { id: 27, name: 'Kims Duet 濾包式經典黑咖啡', price: 350, description: '5包入', image: 'https://drive.google.com/thumbnail?id=16f0YLekgLcN738vz8ICIklnzGOuOH3qT&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim's Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim's Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
+            { id: 28, name: 'Kims Duet 濾包式南洋四口味組合', price: 500, description: '8包入', image: 'https://drive.google.com/thumbnail?id=1oqZMtMjFWbosTHDMGWlT6icul28FswCp&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim's Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim's Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
+            { id: 29, name: 'Kims Duet 深焙膠囊咖啡', price: 450, description: '10入', image: 'https://drive.google.com/thumbnail?id=1To_5YSr1NV4NO02yZRdbBBvEd7Zx85MM&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim's Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim's Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
+            { id: 30, name: 'Kims Duet 濾包式奶咖', price: 550, description: '15入', image: 'https://drive.google.com/thumbnail?id=1psstQ6x9TTc1XjbaX2756RRNWSTSl9Lr&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim's Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim's Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
+            { id: 31, name: 'Kims Duet 濾包式經典口味三入組', price: 750, description: '15入', image: 'https://drive.google.com/thumbnail?id=1zEKYdnDTo-ZR_tjIaNYVnYkgCCpZsh5h&sz=w1000', category: 'coffee', country: 'singapore' , detailedDescription: 'Kim's Duet 是新加坡在地的傳統咖啡品牌，(可能大家到新加坡會想買 Bacha? 但 Kim's Duet 才是最道地的喔！) 金隊咖啡是當地老字號烘焙商 Kim Guan Guan 推出的深焙咖啡，味道偏苦但不酸，整體偏濃香、有存在感，帶一點焦香，是新加坡及南洋 Kopi 店很典型的味道'},
+            {
+                id: 32,
+                name: '金鴨 零食',
+                description: '多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000',
+                category: 'snacks',
+                country: 'singapore',
+                detailedDescription: '金鴨是新加坡知名零食品牌，以獨特的鹹蛋黃風味聞名，每款產品都香酥可口，是新加坡國民零食。',
+                variants: [
+                    {
+                        id: 3201,
+                        name: '辣椒蟹天婦羅紫菜',
+                        price: 299,
+                        image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000',
+                        description: '102g - 運用蟹肉、咖哩葉、辣椒等多種原材製作，香脆微辣的口感吃起來超過癮，喜歡辣味零食的朋友們千萬別錯過！'
+                    },
+                    {
+                        id: 3202,
+                        name: '鹹蛋黃蟹天婦羅紫菜',
+                        price: 299,
+                        image: 'https://drive.google.com/thumbnail?id=1co2bGsvkxK3n7L2zvI1ijo_u29xRg0VJ&sz=w1000',
+                        description: '102g - 將香濃鹹蛋黃和蟹肉結合，再加上炸得香脆的紫菜解膩，入口有濃郁的海鮮風味，非常適合作為下酒菜。'
+                    },
+                    {
+                        id: 3203,
+                        name: '鹹蛋黃炸魚皮',
+                        price: 299,
+                        image: 'https://drive.google.com/thumbnail?id=1LORX9kXDnBwe4Wolc99KNHjrGPET-sPm&sz=w1000',
+                        description: '102g - 酥脆可口，鹹蛋黃風味濃郁，是新加坡國民零食！'
+                    },
+                    {
+                        id: 3204,
+                        name: '鹹蛋黃鹹薯片',
+                        price: 299,
+                        image: 'https://drive.google.com/thumbnail?id=1Yaa4KOBWPtYOcJkqgqNB92ni1ELBRa0G&sz=w1000',
+                        description: '102g - 薯片香脆，搭配濃郁的鹹蛋黃醬，一吃就停不下來的美味！'
+                    }
+                ]
+            },
             {
                 id: 36,
                 name: 'Mediheal N.M.F 針劑水庫面膜',
