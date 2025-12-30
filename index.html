@@ -1495,33 +1495,34 @@
                 <!-- 日本 - 當前可購買 -->
                 <div class="country-card" id="japan-card" onclick="selectCountry('japan')">
                     <div class="country-name">日本 🇯🇵</div>
-                    <div class="country-deadline">截止：2025/1/5</div>
+                    <div class="country-deadline">截止：2025/1/17 | 預計1/23出貨</div>
                 </div>
 
                 <!-- 韓國 - 當前可購買 -->
                 <div class="country-card" id="korea-card" onclick="selectCountry('korea')">
                     <div class="country-name">韓國 🇰🇷</div>
-                    <div class="country-deadline">截止：2025/1/20</div>
+                    <div class="country-deadline">截止：2025/2/1 | 預計2/7出貨</div>
                 </div>
 
-                <!-- 新加坡 - 當前可購買 -->
-                <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')">
+                <!-- 新加坡 - 暫不開放購買 -->
+                <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')" style="opacity: 0.85;">
+                    <span class="coming-soon-badge" style="background: #ff9800;">暫不開放</span>
                     <div class="country-name">新加坡 🇸🇬</div>
-                    <div class="country-deadline">截止：2025/1/15</div>
+                    <div class="country-status" style="color: #666;">僅供瀏覽</div>
                 </div>
 
                 <!-- 馬來西亞 - 即將推出 -->
                 <div class="country-card coming-soon">
                     <span class="coming-soon-badge">即將推出</span>
                     <div class="country-name">馬來西亞 🇲🇾</div>
-                    <div class="country-status">敬請期待</div>
+                    <div class="country-status">預計2/1開放下單</div>
                 </div>
 
                 <!-- 美國 - 即將推出 -->
                 <div class="country-card coming-soon">
                     <span class="coming-soon-badge">即將推出</span>
                     <div class="country-name">美國 🇺🇸</div>
-                    <div class="country-status">敬請期待</div>
+                    <div class="country-status">預計2/18開放下單</div>
                 </div>
             </div>
         </div>
@@ -2637,6 +2638,20 @@
                 document.getElementById('productVariantsSection').style.display = 'block';
                 document.getElementById('productSimpleSection').style.display = 'none';
                 renderVariantsList(product.variants);
+
+                // 如果是新加坡商品，禁用加入購物車按鈕
+                const variantBtn = document.getElementById('variantAddToCartBtn');
+                if (product.country === 'singapore') {
+                    variantBtn.disabled = true;
+                    variantBtn.style.background = '#ccc';
+                    variantBtn.style.cursor = 'not-allowed';
+                    variantBtn.textContent = '暫不開放購買（僅供瀏覽）';
+                } else {
+                    variantBtn.disabled = false;
+                    variantBtn.style.background = '';
+                    variantBtn.style.cursor = '';
+                    variantBtn.textContent = '確認加入購物車';
+                }
             } else {
                 document.getElementById('productVariantsSection').style.display = 'none';
                 document.getElementById('productSimpleSection').style.display = 'block';
@@ -2876,6 +2891,12 @@
         function addVariantsToCart() {
             if (!currentProduct || !currentProduct.variants) return;
 
+            // 檢查是否為新加坡商品
+            if (currentProduct.country === 'singapore') {
+                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+                return;
+            }
+
             let addedCount = 0;
             currentProduct.variants.forEach(variant => {
                 const qty = parseInt(document.getElementById(`variant-qty-${variant.id}`).value);
@@ -2994,15 +3015,22 @@
 
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
+
+            // 檢查是否為新加坡商品
+            if (product.country === 'singapore') {
+                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+                return;
+            }
+
             const qty = parseInt(document.getElementById(`qty-${productId}`).value);
-            
+
             const existingItem = cart.find(item => item.id === productId);
             if (existingItem) {
                 existingItem.quantity += qty;
             } else {
                 cart.push({ ...product, quantity: qty });
             }
-            
+
             updateCartBadge();
             alert('已加入購物車！');
         }
@@ -3489,7 +3517,7 @@
                         <span style="font-weight: 600;">💡 小提示：</span>點擊不同款式的圖片或使用左右箭頭切換，即可查看各款式的詳細介紹與功效說明！
                     </div>
                     <div id="productVariantsList"></div>
-                    <button class="add-to-cart" onclick="addVariantsToCart()" style="margin-top: 20px; width: 100%;">確認加入購物車</button>
+                    <button id="variantAddToCartBtn" class="add-to-cart" onclick="addVariantsToCart()" style="margin-top: 20px; width: 100%;">確認加入購物車</button>
                 </div>
 
                 <!-- 單一商品數量選擇區域（新加坡商品） -->
