@@ -2599,7 +2599,13 @@
             }
 
             // 使用商品的詳細介紹
-            const descriptionText = product.detailedDescription || '這是一個精選的優質商品，品質保證，值得您的信賴與選購。';
+            // 如果有款式，優先顯示第一個款式的介紹；否則顯示主商品的介紹
+            let descriptionText;
+            if (hasVariants && product.variants[0] && product.variants[0].description) {
+                descriptionText = product.variants[0].description;
+            } else {
+                descriptionText = product.detailedDescription || '這是一個精選的優質商品，品質保證，值得您的信賴與選購。';
+            }
             document.getElementById('productDetailDescriptionText').innerHTML = descriptionText;
 
             // 顯示/隱藏圖片輪播按鈕
@@ -2763,6 +2769,14 @@
             currentImageIndex = index;
             document.getElementById('productDetailImage').src = productImages[index];
             renderImageDots();
+
+            // 更新商品描述為當前選中款式的介紹
+            if (currentProduct.variants && currentProduct.variants[index]) {
+                const variant = currentProduct.variants[index];
+                if (variant.description) {
+                    document.getElementById('productDetailDescriptionText').innerHTML = variant.description;
+                }
+            }
         }
 
         // 上一張圖片
@@ -2770,6 +2784,9 @@
             currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
             document.getElementById('productDetailImage').src = productImages[currentImageIndex];
             renderImageDots();
+
+            // 更新商品描述為當前款式的介紹
+            updateVariantDescription();
         }
 
         // 下一張圖片
@@ -2777,6 +2794,19 @@
             currentImageIndex = (currentImageIndex + 1) % productImages.length;
             document.getElementById('productDetailImage').src = productImages[currentImageIndex];
             renderImageDots();
+
+            // 更新商品描述為當前款式的介紹
+            updateVariantDescription();
+        }
+
+        // 更新款式描述
+        function updateVariantDescription() {
+            if (currentProduct.variants && currentProduct.variants[currentImageIndex]) {
+                const variant = currentProduct.variants[currentImageIndex];
+                if (variant.description) {
+                    document.getElementById('productDetailDescriptionText').innerHTML = variant.description;
+                }
+            }
         }
 
         // 渲染圖片指示器
