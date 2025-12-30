@@ -2563,12 +2563,22 @@
         let productImages = [];
 
         // 顯示商品詳情
+        // 檢查商品是否有詳細的款式介紹（而非只是容量差異）
+        function hasDetailedVariantDescriptions(product) {
+            if (!product.variants || product.variants.length === 0) return false;
+
+            // 檢查是否有任何一個variant的description長度超過50字
+            // 長度超過50字通常表示是詳細的產品介紹，而非簡單的容量描述
+            return product.variants.some(v => v.description && v.description.length > 50);
+        }
+
         function showProductDetail(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
             currentProduct = product;
             const hasVariants = product.variants && product.variants.length > 0;
+            const hasDetailedDescriptions = hasDetailedVariantDescriptions(product);
 
             // 準備圖片列表
             if (hasVariants) {
@@ -2599,9 +2609,9 @@
             }
 
             // 使用商品的詳細介紹
-            // 如果有款式，優先顯示第一個款式的介紹；否則顯示主商品的介紹
+            // 只有在variants有詳細介紹時才使用variant的description，否則使用主商品的description
             let descriptionText;
-            if (hasVariants && product.variants[0] && product.variants[0].description) {
+            if (hasDetailedDescriptions && product.variants[0] && product.variants[0].description) {
                 descriptionText = product.variants[0].description;
             } else {
                 descriptionText = product.detailedDescription || '這是一個精選的優質商品，品質保證，值得您的信賴與選購。';
@@ -2615,6 +2625,12 @@
 
             // 渲染圖片指示器
             renderImageDots();
+
+            // 顯示/隱藏款式切換提示
+            const variantHint = document.getElementById('variantSwitchHint');
+            if (variantHint) {
+                variantHint.style.display = hasDetailedDescriptions ? 'block' : 'none';
+            }
 
             // 處理款式選擇區域
             if (hasVariants) {
@@ -2801,10 +2817,13 @@
 
         // 更新款式描述
         function updateVariantDescription() {
-            if (currentProduct.variants && currentProduct.variants[currentImageIndex]) {
-                const variant = currentProduct.variants[currentImageIndex];
-                if (variant.description) {
-                    document.getElementById('productDetailDescriptionText').innerHTML = variant.description;
+            // 只有當商品有詳細的款式介紹時才更新描述
+            if (hasDetailedVariantDescriptions(currentProduct)) {
+                if (currentProduct.variants && currentProduct.variants[currentImageIndex]) {
+                    const variant = currentProduct.variants[currentImageIndex];
+                    if (variant.description) {
+                        document.getElementById('productDetailDescriptionText').innerHTML = variant.description;
+                    }
                 }
             }
         }
@@ -3466,7 +3485,7 @@
                 <!-- 款式選擇區域（僅商品系列顯示） -->
                 <div id="productVariantsSection" style="display: none;">
                     <h4 style="margin: 20px 0 10px 0; font-size: 16px;">🛍️ 選擇款式</h4>
-                    <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; font-size: 13px; color: #e65100;">
+                    <div id="variantSwitchHint" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; font-size: 13px; color: #e65100; display: none;">
                         <span style="font-weight: 600;">💡 小提示：</span>點擊不同款式的圖片或使用左右箭頭切換，即可查看各款式的詳細介紹與功效說明！
                     </div>
                     <div id="productVariantsList"></div>
