@@ -1495,13 +1495,15 @@
                 <!-- 日本 - 當前可購買 -->
                 <div class="country-card" id="japan-card" onclick="selectCountry('japan')">
                     <div class="country-name">日本 🇯🇵</div>
-                    <div class="country-deadline">截止：2025/1/17 | 預計1/23出貨</div>
+                    <div class="country-deadline">截止：2025/1/17</div>
+                    <div class="country-deadline">預計1/23出貨</div>
                 </div>
 
                 <!-- 韓國 - 當前可購買 -->
                 <div class="country-card" id="korea-card" onclick="selectCountry('korea')">
                     <div class="country-name">韓國 🇰🇷</div>
-                    <div class="country-deadline">截止：2025/2/1 | 預計2/7出貨</div>
+                    <div class="country-deadline">截止：2025/2/1</div>
+                    <div class="country-deadline">預計2/7出貨</div>
                 </div>
 
                 <!-- 新加坡 - 暫不開放購買 -->
@@ -1515,14 +1517,14 @@
                 <div class="country-card coming-soon">
                     <span class="coming-soon-badge">即將推出</span>
                     <div class="country-name">馬來西亞 🇲🇾</div>
-                    <div class="country-status">預計2/1開放下單</div>
+                    <div class="country-status">預計2/1開放</div>
                 </div>
 
                 <!-- 美國 - 即將推出 -->
                 <div class="country-card coming-soon">
                     <span class="coming-soon-badge">即將推出</span>
                     <div class="country-name">美國 🇺🇸</div>
-                    <div class="country-status">預計2/18開放下單</div>
+                    <div class="country-status">預計2/18開放</div>
                 </div>
             </div>
         </div>
@@ -2656,6 +2658,20 @@
                 document.getElementById('productVariantsSection').style.display = 'none';
                 document.getElementById('productSimpleSection').style.display = 'block';
                 document.getElementById('simpleProductQty').value = 1;
+
+                // 如果是新加坡商品，禁用加入購物車按鈕
+                const simpleBtn = document.getElementById('simpleAddToCartBtn');
+                if (product.country === 'singapore') {
+                    simpleBtn.disabled = true;
+                    simpleBtn.style.background = '#ccc';
+                    simpleBtn.style.cursor = 'not-allowed';
+                    simpleBtn.textContent = '暫不開放購買（僅供瀏覽）';
+                } else {
+                    simpleBtn.disabled = false;
+                    simpleBtn.style.background = '';
+                    simpleBtn.style.cursor = '';
+                    simpleBtn.textContent = '加入購物車';
+                }
             }
 
             document.getElementById('productDetailModal').style.display = 'block';
@@ -2770,6 +2786,12 @@
 
         // 將單一商品加入購物車
         function addSimpleProductToCart() {
+            // 檢查是否為新加坡商品
+            if (currentProduct.country === 'singapore') {
+                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+                return;
+            }
+
             const qty = parseInt(document.getElementById('simpleProductQty').value);
             if (qty < 1) {
                 alert('請選擇數量！');
@@ -3558,7 +3580,7 @@
                             ">+</button>
                         </div>
                     </div>
-                    <button class="add-to-cart" onclick="addSimpleProductToCart()" style="margin-top: 10px; width: 100%;">加入購物車</button>
+                    <button id="simpleAddToCartBtn" class="add-to-cart" onclick="addSimpleProductToCart()" style="margin-top: 10px; width: 100%;">加入購物車</button>
                 </div>
             </div>
         </div>
@@ -3856,6 +3878,7 @@
                 const fullProduct = products.find(p => p.id === product.id);
                 const price = fullProduct ? fullProduct.price : 0;
                 const spec = fullProduct ? fullProduct.description : '';
+                const isSingapore = fullProduct && fullProduct.country === 'singapore';
 
                 return `
                     <div class="hot-product-item">
@@ -3869,12 +3892,18 @@
                             <div style="color: #000000; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">
                                 NT$ ${price}
                             </div>
-                            <div class="quantity-control">
-                                <button onclick="updateHotProductQuantity(${product.id}, -1)">-</button>
-                                <input type="number" id="hot-qty-${product.id}" value="1" min="1" readonly>
-                                <button onclick="updateHotProductQuantity(${product.id}, 1)">+</button>
-                            </div>
-                            <button class="add-to-cart" onclick="addHotProductToCart(${product.id})">加入購物車</button>
+                            ${isSingapore ? `
+                                <div style="padding: 10px; background: #fff3e0; border: 1px solid #ff9800; border-radius: 5px; color: #f57c00; font-size: 0.9em; margin-bottom: 10px;">
+                                    ⚠️ 暫不開放購買（僅供瀏覽）
+                                </div>
+                            ` : `
+                                <div class="quantity-control">
+                                    <button onclick="updateHotProductQuantity(${product.id}, -1)">-</button>
+                                    <input type="number" id="hot-qty-${product.id}" value="1" min="1" readonly>
+                                    <button onclick="updateHotProductQuantity(${product.id}, 1)">+</button>
+                                </div>
+                                <button class="add-to-cart" onclick="addHotProductToCart(${product.id})">加入購物車</button>
+                            `}
                         </div>
                     </div>
                 `;
@@ -3894,6 +3923,12 @@
         function addHotProductToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
+
+            // 檢查是否為新加坡商品
+            if (product.country === 'singapore') {
+                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+                return;
+            }
 
             const quantityInput = document.getElementById(`hot-qty-${productId}`);
             const quantity = parseInt(quantityInput.value) || 1;
