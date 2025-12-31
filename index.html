@@ -356,11 +356,7 @@
         }
 
         /* 韓國篩選器 - 電腦版橫向滾動布局 */
-        .korea-filter-grid {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            gap: 12px;
+        #korea-categories {
             overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
@@ -369,21 +365,38 @@
             padding-bottom: 5px;
         }
 
-        .korea-filter-grid::-webkit-scrollbar {
+        #korea-categories::-webkit-scrollbar {
             height: 6px;
         }
 
-        .korea-filter-grid::-webkit-scrollbar-track {
+        #korea-categories::-webkit-scrollbar-track {
             background: transparent;
         }
 
-        .korea-filter-grid::-webkit-scrollbar-thumb {
+        #korea-categories::-webkit-scrollbar-thumb {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 3px;
         }
 
-        .korea-filter-grid::-webkit-scrollbar-thumb:hover {
+        #korea-categories::-webkit-scrollbar-thumb:hover {
             background: rgba(0, 0, 0, 0.3);
+        }
+
+        #korea-categories > div {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 40px;
+        }
+
+        #korea-categories > div:last-child {
+            margin-right: 0;
+        }
+
+        .korea-filter-grid {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 12px;
         }
 
         .korea-filter-grid button {
@@ -395,13 +408,26 @@
 
         /* 平板版改為網格布局 */
         @media (max-width: 768px) {
+            #korea-categories {
+                overflow-x: visible;
+                overflow-y: visible;
+                padding-bottom: 0;
+            }
+
+            #korea-categories > div {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            #korea-categories > div:last-child {
+                margin-bottom: 0;
+            }
+
             .korea-filter-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
                 gap: 8px;
-                overflow-x: visible;
-                overflow-y: visible;
-                padding-bottom: 0;
             }
 
             .korea-filter-grid button {
