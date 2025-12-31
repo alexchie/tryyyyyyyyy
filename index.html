@@ -355,48 +355,27 @@
             background: linear-gradient(90deg, #ffffff, #e0e0e0);
         }
 
-        /* 韓國篩選器 - 電腦版橫向滾動布局 */
-        #korea-categories {
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-            padding-bottom: 5px;
-        }
-
-        #korea-categories::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        #korea-categories::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        #korea-categories::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-        }
-
-        #korea-categories::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
+        /* 韓國篩選器 - 電腦版換行布局 */
         #korea-categories > div {
-            display: inline-block;
-            vertical-align: top;
-            margin-right: 40px;
+            display: block;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         #korea-categories > div:last-child {
-            margin-right: 0;
+            margin-bottom: 0;
+        }
+
+        #korea-categories > div > div:first-child {
+            text-align: left;
         }
 
         .korea-filter-grid {
             display: flex;
             flex-direction: row;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             gap: 12px;
+            justify-content: flex-start;
         }
 
         .korea-filter-grid button {
