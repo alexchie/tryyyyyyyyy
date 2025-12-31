@@ -355,6 +355,46 @@
             background: linear-gradient(90deg, #ffffff, #e0e0e0);
         }
 
+        /* 韓國篩選器網格布局 */
+        .korea-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            width: 100%;
+        }
+
+        .korea-filter-grid button {
+            width: 100%;
+            min-width: 0;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+
+        /* 移動端優化 */
+        @media (max-width: 768px) {
+            .korea-filter-grid {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 8px;
+            }
+
+            .korea-filter-grid button {
+                padding: 8px 10px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .korea-filter-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 6px;
+            }
+
+            .korea-filter-grid button {
+                padding: 7px 8px;
+                font-size: 0.8em;
+            }
+        }
+
         .cart-badge {
             position: fixed;
             bottom: 20px;
@@ -1545,13 +1585,13 @@
         <!-- 韓國分類導航 -->
         <div class="category-nav" id="korea-categories" style="display: none;">
             <!-- 品牌篩選器 -->
-            <div style="margin-bottom: 15px;">
-                <div style="font-weight: 600; margin-bottom: 8px; color: #333;">品牌</div>
-                <div>
+            <div style="margin-bottom: 20px;">
+                <div style="font-weight: 600; margin-bottom: 10px; color: #333; font-size: 1.05em;">🏷️ 品牌</div>
+                <div class="korea-filter-grid">
                     <button class="active" onclick="filterByBrand('all')">全部品牌</button>
                     <button onclick="filterByBrand('Aestura')">Aestura</button>
                     <button onclick="filterByBrand('Arencia')">Arencia</button>
-                    <button onclick="filterByBrand('Bioheal BOH - Panthecell')">Bioheal BOH - Panthecell</button>
+                    <button onclick="filterByBrand('Bioheal BOH - Panthecell')">Bioheal BOH</button>
                     <button onclick="filterByBrand('Beplain')">Beplain</button>
                     <button onclick="filterByBrand('Celimax')">Celimax</button>
                     <button onclick="filterByBrand('Centellian')">Centellian</button>
@@ -1567,8 +1607,8 @@
             </div>
             <!-- 商品種類篩選器 -->
             <div>
-                <div style="font-weight: 600; margin-bottom: 8px; color: #333;">商品種類</div>
-                <div>
+                <div style="font-weight: 600; margin-bottom: 10px; color: #333; font-size: 1.05em;">📦 商品種類</div>
+                <div class="korea-filter-grid">
                     <button class="active" onclick="filterByType('all')">全部種類</button>
                     <button onclick="filterByType('化妝品')">化妝品</button>
                     <button onclick="filterByType('保養品')">保養品</button>
@@ -2267,7 +2307,7 @@
             renderProducts();
 
             // Update active button - 只更新品牌篩選器的按鈕
-            const brandButtons = document.querySelectorAll('#korea-categories > div:first-child button');
+            const brandButtons = document.querySelectorAll('#korea-categories .korea-filter-grid:first-of-type button');
             brandButtons.forEach(btn => {
                 btn.classList.remove('active');
             });
@@ -2280,7 +2320,7 @@
             renderProducts();
 
             // Update active button - 只更新商品種類篩選器的按鈕
-            const typeButtons = document.querySelectorAll('#korea-categories > div:last-child button');
+            const typeButtons = document.querySelectorAll('#korea-categories .korea-filter-grid:last-of-type button');
             typeButtons.forEach(btn => {
                 btn.classList.remove('active');
             });
@@ -3254,13 +3294,13 @@
 
                 // 重置品牌和種類篩選器的active狀態
                 setTimeout(() => {
-                    const brandButtons = document.querySelectorAll('#korea-categories > div:nth-child(1) button');
+                    const brandButtons = document.querySelectorAll('#korea-categories .korea-filter-grid:first-of-type button');
                     brandButtons.forEach((btn, index) => {
                         btn.classList.remove('active');
                         if (index === 0) btn.classList.add('active'); // 第一個按鈕設為active
                     });
 
-                    const typeButtons = document.querySelectorAll('#korea-categories > div:nth-child(2) button');
+                    const typeButtons = document.querySelectorAll('#korea-categories .korea-filter-grid:last-of-type button');
                     typeButtons.forEach((btn, index) => {
                         btn.classList.remove('active');
                         if (index === 0) btn.classList.add('active'); // 第一個按鈕設為active
