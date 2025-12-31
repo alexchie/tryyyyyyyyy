@@ -355,69 +355,42 @@
             background: linear-gradient(90deg, #ffffff, #e0e0e0);
         }
 
-        /* 韓國篩選器 - 電腦版橫向滾動布局 */
+        /* 韓國篩選器 - 統一網格布局（電腦版和手機版） */
         .korea-filter-grid {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 12px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-            padding-bottom: 5px;
-        }
-
-        .korea-filter-grid::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .korea-filter-grid::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .korea-filter-grid::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-        }
-
-        .korea-filter-grid::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.3);
         }
 
         .korea-filter-grid button {
-            flex-shrink: 0;
-            white-space: nowrap;
+            width: 100%;
             padding: 10px 20px;
             font-size: 0.95em;
+            white-space: normal;
+            word-break: break-word;
         }
 
-        /* 手機版改為網格布局（e5e1487 版本）*/
+        /* 平板版調整網格參數 */
         @media (max-width: 768px) {
-            #korea-categories .korea-filter-grid {
-                display: grid !important;
+            .korea-filter-grid {
                 grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
                 gap: 8px;
-                overflow-x: visible;
-                overflow-y: visible;
-                padding-bottom: 0;
             }
 
-            #korea-categories .korea-filter-grid button {
-                width: 100%;
-                min-width: 0;
+            .korea-filter-grid button {
                 padding: 8px 10px;
                 font-size: 0.85em;
-                white-space: normal;
             }
         }
 
+        /* 手機版調整網格參數 */
         @media (max-width: 480px) {
-            #korea-categories .korea-filter-grid {
+            .korea-filter-grid {
                 grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
                 gap: 6px;
             }
 
-            #korea-categories .korea-filter-grid button {
+            .korea-filter-grid button {
                 padding: 7px 8px;
                 font-size: 0.8em;
             }
@@ -640,29 +613,6 @@
                 min-width: auto;
                 white-space: nowrap;
                 flex-shrink: 0;
-            }
-
-            /* 韓國篩選器網格布局覆蓋 - Override for Korea filter grids */
-            #korea-categories > div {
-                display: block !important;
-            }
-
-            #korea-categories .korea-filter-grid {
-                display: grid !important;
-                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
-                gap: 8px !important;
-                overflow-x: visible !important;
-                overflow-y: visible !important;
-                padding-bottom: 0 !important;
-            }
-
-            #korea-categories .korea-filter-grid button {
-                width: 100% !important;
-                min-width: 0 !important;
-                padding: 8px 10px !important;
-                font-size: 0.85em !important;
-                white-space: normal !important;
-                flex-shrink: 1 !important;
             }
 
             /* 國家選擇橫向滑動 - Country cards horizontal scroll */
