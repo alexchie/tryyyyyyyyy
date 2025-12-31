@@ -642,6 +642,29 @@
                 flex-shrink: 0;
             }
 
+            /* 韓國篩選器網格布局覆蓋 - Override for Korea filter grids */
+            #korea-categories > div {
+                display: block !important;
+            }
+
+            #korea-categories .korea-filter-grid {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
+                gap: 8px !important;
+                overflow-x: visible !important;
+                overflow-y: visible !important;
+                padding-bottom: 0 !important;
+            }
+
+            #korea-categories .korea-filter-grid button {
+                width: 100% !important;
+                min-width: 0 !important;
+                padding: 8px 10px !important;
+                font-size: 0.85em !important;
+                white-space: normal !important;
+                flex-shrink: 1 !important;
+            }
+
             /* 國家選擇橫向滑動 - Country cards horizontal scroll */
             .country-cards {
                 overflow-x: auto;
