@@ -393,8 +393,8 @@
 
         /* 手機版改為網格布局（e5e1487 版本）*/
         @media (max-width: 768px) {
-            .korea-filter-grid {
-                display: grid;
+            #korea-categories .korea-filter-grid {
+                display: grid !important;
                 grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
                 gap: 8px;
                 overflow-x: visible;
@@ -402,7 +402,7 @@
                 padding-bottom: 0;
             }
 
-            .korea-filter-grid button {
+            #korea-categories .korea-filter-grid button {
                 width: 100%;
                 min-width: 0;
                 padding: 8px 10px;
@@ -412,12 +412,12 @@
         }
 
         @media (max-width: 480px) {
-            .korea-filter-grid {
+            #korea-categories .korea-filter-grid {
                 grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
                 gap: 6px;
             }
 
-            .korea-filter-grid button {
+            #korea-categories .korea-filter-grid button {
                 padding: 7px 8px;
                 font-size: 0.8em;
             }
