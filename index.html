@@ -355,7 +355,7 @@
             background: linear-gradient(90deg, #ffffff, #e0e0e0);
         }
 
-        /* 韓國篩選器橫向滾動布局 */
+        /* 韓國篩選器 - 電腦版橫向滾動布局 */
         .korea-filter-grid {
             display: flex;
             gap: 12px;
@@ -389,6 +389,38 @@
             white-space: nowrap;
             padding: 10px 20px;
             font-size: 0.95em;
+        }
+
+        /* 手機版改為網格布局 */
+        @media (max-width: 768px) {
+            .korea-filter-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 8px;
+                overflow-x: visible;
+                overflow-y: visible;
+                padding-bottom: 0;
+            }
+
+            .korea-filter-grid button {
+                width: 100%;
+                min-width: 0;
+                padding: 8px 10px;
+                font-size: 0.85em;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .korea-filter-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 6px;
+            }
+
+            .korea-filter-grid button {
+                padding: 7px 8px;
+                font-size: 0.8em;
+            }
         }
 
         .cart-badge {
