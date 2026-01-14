@@ -2325,7 +2325,7 @@
         ];
 
         let currentCategory = 'all';
-        let currentBrand = 'all';  // 韓國商品品牌篩選
+        let currentBrand = [];  // 韓國商品品牌篩選（多選）
         let currentType = 'all';   // 韓國商品種類篩選
 
         let cart = [];
@@ -2347,15 +2347,40 @@
 
         // 韓國商品品牌篩選
         function filterByBrand(brand) {
-            currentBrand = brand;
-            renderProducts();
+            if (brand === 'all') {
+                // 點擊「全部品牌」時，清空所有選擇
+                currentBrand = [];
+                renderProducts();
 
-            // Update active button - 只更新品牌篩選器的按鈕
-            const brandButtons = document.querySelectorAll('#korea-categories .korea-filter-grid:first-of-type button');
-            brandButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+                // 更新按鈕狀態
+                const brandButtons = document.querySelectorAll('#korea-categories .korea-filter-grid:first-of-type button');
+                brandButtons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            } else {
+                // 點擊特定品牌時，切換選取狀態
+                const index = currentBrand.indexOf(brand);
+                if (index > -1) {
+                    // 已選中，取消選取
+                    currentBrand.splice(index, 1);
+                    event.target.classList.remove('active');
+                } else {
+                    // 未選中，加入選取
+                    currentBrand.push(brand);
+                    event.target.classList.add('active');
+                }
+
+                // 如果沒有任何品牌被選中，自動激活「全部品牌」
+                if (currentBrand.length === 0) {
+                    const allButton = document.querySelector('#korea-categories .korea-filter-grid:first-of-type button:first-child');
+                    if (allButton) allButton.classList.add('active');
+                } else {
+                    // 有品牌被選中時，取消「全部品牌」的激活狀態
+                    const allButton = document.querySelector('#korea-categories .korea-filter-grid:first-of-type button:first-child');
+                    if (allButton) allButton.classList.remove('active');
+                }
+
+                renderProducts();
+            }
         }
 
         // 韓國商品種類篩選
@@ -2792,9 +2817,9 @@
             if (currentCountry === 'korea') {
                 filteredProducts = countryProducts;
 
-                // 品牌篩選
-                if (currentBrand !== 'all') {
-                    filteredProducts = filteredProducts.filter(p => p.brand === currentBrand);
+                // 品牌篩選（多選）
+                if (currentBrand.length > 0) {
+                    filteredProducts = filteredProducts.filter(p => currentBrand.includes(p.brand));
                 }
 
                 // 商品種類篩選
@@ -3333,7 +3358,7 @@
             // 重置篩選器
             if (country === 'korea') {
                 // 韓國：重置品牌和商品種類篩選器
-                currentBrand = 'all';
+                currentBrand = [];
                 currentType = 'all';
 
                 // 重置品牌和種類篩選器的active狀態
