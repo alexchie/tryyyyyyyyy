@@ -4082,9 +4082,10 @@
                 const price = fullProduct ? fullProduct.price : 0;
                 const spec = fullProduct ? fullProduct.description : '';
                 const isViewOnly = fullProduct && (fullProduct.country === 'singapore' || fullProduct.country === 'japan');
+                const hasVariants = fullProduct && fullProduct.variants && fullProduct.variants.length > 0;
 
                 return `
-                    <div class="hot-product-item">
+                    <div class="hot-product-item" onclick="openHotProductDetail(${product.id})" style="cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)';" onmouseout="this.style.transform=''; this.style.boxShadow='';">
                         <div class="hot-product-rank ${rankClass}">
                             ${rankEmoji}${product.rank}
                         </div>
@@ -4093,72 +4094,26 @@
                             <div class="hot-product-name">${product.name}</div>
                             <div class="hot-product-description">${product.description}</div>
                             <div style="color: #000000; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">
-                                NT$ ${price}
+                                ${hasVariants ? `NT$ ${price} 起` : `NT$ ${price}`}
                             </div>
                             ${isViewOnly ? `
                                 <div style="padding: 10px; background: #fff3e0; border: 1px solid #ff9800; border-radius: 5px; color: #f57c00; font-size: 0.9em; margin-bottom: 10px;">
                                     ⚠️ 暫不開放購買（僅供瀏覽）
                                 </div>
-                            ` : `
-                                <div class="quantity-control">
-                                    <button onclick="updateHotProductQuantity(${product.id}, -1)">-</button>
-                                    <input type="number" id="hot-qty-${product.id}" value="1" min="1" readonly>
-                                    <button onclick="updateHotProductQuantity(${product.id}, 1)">+</button>
-                                </div>
-                                <button class="add-to-cart" onclick="addHotProductToCart(${product.id})">加入購物車</button>
-                            `}
+                            ` : ''}
+                            <button class="add-to-cart" onclick="event.stopPropagation(); openHotProductDetail(${product.id})" style="background: #333; color: white;">
+                                ${hasVariants ? '選擇規格' : '查看詳情'}
+                            </button>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        // 更新熱賣商品數量
-        function updateHotProductQuantity(productId, change) {
-            const input = document.getElementById(`hot-qty-${productId}`);
-            let currentValue = parseInt(input.value) || 1;
-            currentValue += change;
-            if (currentValue < 1) currentValue = 1;
-            input.value = currentValue;
-        }
-
-        // 從熱賣商品添加到購物車
-        function addHotProductToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-
-            // 檢查是否為新加坡或日本商品
-            if (product.country === 'singapore' || product.country === 'japan') {
-                alert('此區域商品目前暫不開放購買，僅供瀏覽。');
-                return;
-            }
-
-            const quantityInput = document.getElementById(`hot-qty-${productId}`);
-            const quantity = parseInt(quantityInput.value) || 1;
-
-            // 檢查購物車中是否已有此商品
-            const existingItem = cart.find(item => item.id === productId);
-
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    description: product.description,
-                    image: product.image,
-                    quantity: quantity
-                });
-            }
-
-            updateCartBadge();
-
-            // 顯示成功提示
-            alert(`已將 ${quantity} 個「${product.name}」加入購物車！`);
-
-            // 重置數量為1
-            quantityInput.value = 1;
+        // 從熱賣商品打開商品詳情
+        function openHotProductDetail(productId) {
+            closeHotProductsModal();
+            showProductDetail(productId);
         }
 
         // Close modal when clicking outside
