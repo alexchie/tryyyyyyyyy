@@ -1577,18 +1577,18 @@
         <div class="country-selector">
             <div class="country-selector-title">選擇代購國家</div>
             <div class="country-cards">
-                <!-- 日本 - 當前可購買 -->
-                <div class="country-card" id="japan-card" onclick="selectCountry('japan')">
-                    <div class="country-name">日本 🇯🇵</div>
-                    <div class="country-deadline">截止：2025/1/17</div>
-                    <div class="country-deadline">預計1/23出貨</div>
-                </div>
-
                 <!-- 韓國 - 當前可購買 -->
                 <div class="country-card" id="korea-card" onclick="selectCountry('korea')">
                     <div class="country-name">韓國 🇰🇷</div>
                     <div class="country-deadline">截止：2025/2/1</div>
                     <div class="country-deadline">預計2/7出貨</div>
+                </div>
+
+                <!-- 日本 - 暫不開放購買 -->
+                <div class="country-card" id="japan-card" onclick="selectCountry('japan')" style="opacity: 0.85;">
+                    <span class="coming-soon-badge" style="background: #ff9800;">暫不開放</span>
+                    <div class="country-name">日本 🇯🇵</div>
+                    <div class="country-status" style="color: #666;">僅供瀏覽</div>
                 </div>
 
                 <!-- 新加坡 - 暫不開放購買 -->
@@ -2804,9 +2804,9 @@
                 document.getElementById('productSimpleSection').style.display = 'none';
                 renderVariantsList(product.variants);
 
-                // 如果是新加坡商品，禁用加入購物車按鈕
+                // 如果是新加坡或日本商品，禁用加入購物車按鈕
                 const variantBtn = document.getElementById('variantAddToCartBtn');
-                if (product.country === 'singapore') {
+                if (product.country === 'singapore' || product.country === 'japan') {
                     variantBtn.disabled = true;
                     variantBtn.style.background = '#ccc';
                     variantBtn.style.cursor = 'not-allowed';
@@ -2822,9 +2822,9 @@
                 document.getElementById('productSimpleSection').style.display = 'block';
                 document.getElementById('simpleProductQty').value = 1;
 
-                // 如果是新加坡商品，禁用加入購物車按鈕
+                // 如果是新加坡或日本商品，禁用加入購物車按鈕
                 const simpleBtn = document.getElementById('simpleAddToCartBtn');
-                if (product.country === 'singapore') {
+                if (product.country === 'singapore' || product.country === 'japan') {
                     simpleBtn.disabled = true;
                     simpleBtn.style.background = '#ccc';
                     simpleBtn.style.cursor = 'not-allowed';
@@ -2949,9 +2949,9 @@
 
         // 將單一商品加入購物車
         function addSimpleProductToCart() {
-            // 檢查是否為新加坡商品
-            if (currentProduct.country === 'singapore') {
-                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+            // 檢查是否為新加坡或日本商品
+            if (currentProduct.country === 'singapore' || currentProduct.country === 'japan') {
+                alert('此區域商品目前暫不開放購買，僅供瀏覽。');
                 return;
             }
 
@@ -3076,9 +3076,9 @@
         function addVariantsToCart() {
             if (!currentProduct || !currentProduct.variants) return;
 
-            // 檢查是否為新加坡商品
-            if (currentProduct.country === 'singapore') {
-                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+            // 檢查是否為新加坡或日本商品
+            if (currentProduct.country === 'singapore' || currentProduct.country === 'japan') {
+                alert('此區域商品目前暫不開放購買，僅供瀏覽。');
                 return;
             }
 
@@ -3217,9 +3217,9 @@
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
 
-            // 檢查是否為新加坡商品
-            if (product.country === 'singapore') {
-                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+            // 檢查是否為新加坡或日本商品
+            if (product.country === 'singapore' || product.country === 'japan') {
+                alert('此區域商品目前暫不開放購買，僅供瀏覽。');
                 return;
             }
 
@@ -3647,7 +3647,7 @@
         window.addEventListener('resize', initAirplaneAnimation);
 
         // 當前選擇的國家
-        let currentCountry = 'japan';
+        let currentCountry = 'korea';
 
         // 國家選擇功能
         function selectCountry(country) {
@@ -4026,39 +4026,39 @@
         // Hot Products modal functions
         const hotProducts = [
             {
-                id: 5007,
+                id: 8001,
                 rank: 1,
-                name: 'ELIXIR 怡麗絲爾 小金管',
-                description: '熱賣NO.1經典款！一擦養成飽滿彈潤肌，超強防曬力同時注入膠原修護因子',
-                image: 'https://drive.google.com/thumbnail?id=1GfLs00Tcbaugz-_6aF5_OoagzM4jOqNK&sz=w1000'
+                name: 'Mediheal 水潤保濕面膜',
+                description: '熱賣NO.1韓國面膜！超服貼3D立體剪裁，補水保濕一次到位',
+                image: 'https://drive.google.com/thumbnail?id=1aWg9MlQvz4O8VdpGgXYZB0vBYR52Y_Dh&sz=w1000'
             },
             {
-                id: 6002,
+                id: 8011,
                 rank: 2,
-                name: 'NEW YORK PERFECT CHEESE',
-                description: '東京伴手禮第一名！薄脆貓舌餅包裹濃郁起司、白巧克力、牛奶奶油',
-                image: 'https://drive.google.com/thumbnail?id=18x2kETmGs1TZXR0yWFPZIf_8EcGnP6IH&sz=w1000'
+                name: 'Dasique 布丁光澤唇釉',
+                description: '超人氣唇釉！水潤光澤質地，打造飽滿雙唇，12色可選',
+                image: 'https://drive.google.com/thumbnail?id=1y2NQ3ShOGBmgaOtbzM5jCj8DKxezFtVa&sz=w1000'
             },
             {
-                id: 6004,
+                id: 8018,
                 rank: 3,
-                name: '白色戀人',
-                description: '北海道知名點心，瑞士國際品質評鑑大賞金獎得主',
-                image: 'https://drive.google.com/thumbnail?id=198Hsn-wkjOWNJHWGIChn7t4Vv88E9-1Y&sz=w1000'
+                name: 'Fwee 唇頰兩用膏單入',
+                description: '多功能唇頰兩用！豐富色彩選擇，一抹打造自然紅潤氣色',
+                image: 'https://drive.google.com/thumbnail?id=1dLfJeU0IHxZ0IHwsI5E34hPSd8Q49CfR&sz=w1000'
             },
             {
-                id: 5005,
+                id: 8006,
                 rank: 4,
-                name: 'DHC速攻藍莓',
-                description: '3C重度使用者救星！高濃度北歐野生藍莓萃取，強力舒緩眼部疲勞',
-                image: 'https://drive.google.com/thumbnail?id=1j3BQFX2bEtRMTMrDm2_8axo24IKe9RG1&sz=w1000'
+                name: 'Numbuzin 3 號超保濕面膜',
+                description: '超強補水面膜！冰川水配方深層保濕，敏感肌也適用',
+                image: 'https://drive.google.com/thumbnail?id=1c0z_4FLe3cXdKPLGmDd6-84LhqcQrEPQ&sz=w1000'
             },
             {
-                id: 6005,
+                id: 8012,
                 rank: 5,
-                name: '東京香蕉Tokyo Banana',
-                description: '東京必買伴手禮！鬆軟海綿蛋糕包裹滿滿香蕉卡士達奶油',
-                image: 'https://drive.google.com/thumbnail?id=1nJcKlCSb3EMX4cso3ukbvDvPFmO4sFJL&sz=w1000'
+                name: 'Dasique 20 色眼影盤',
+                description: '超值眼影盤！豐富配色選擇，打造多變眼妝，7款可選',
+                image: 'https://drive.google.com/thumbnail?id=1dXkIzzbpFFUKsRPgaJsGjyWDs7rRh7-t&sz=w1000'
             }
         ];
 
@@ -4081,7 +4081,7 @@
                 const fullProduct = products.find(p => p.id === product.id);
                 const price = fullProduct ? fullProduct.price : 0;
                 const spec = fullProduct ? fullProduct.description : '';
-                const isSingapore = fullProduct && fullProduct.country === 'singapore';
+                const isViewOnly = fullProduct && (fullProduct.country === 'singapore' || fullProduct.country === 'japan');
 
                 return `
                     <div class="hot-product-item">
@@ -4095,7 +4095,7 @@
                             <div style="color: #000000; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">
                                 NT$ ${price}
                             </div>
-                            ${isSingapore ? `
+                            ${isViewOnly ? `
                                 <div style="padding: 10px; background: #fff3e0; border: 1px solid #ff9800; border-radius: 5px; color: #f57c00; font-size: 0.9em; margin-bottom: 10px;">
                                     ⚠️ 暫不開放購買（僅供瀏覽）
                                 </div>
@@ -4127,9 +4127,9 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            // 檢查是否為新加坡商品
-            if (product.country === 'singapore') {
-                alert('新加坡商品目前暫不開放購買，僅供瀏覽。');
+            // 檢查是否為新加坡或日本商品
+            if (product.country === 'singapore' || product.country === 'japan') {
+                alert('此區域商品目前暫不開放購買，僅供瀏覽。');
                 return;
             }
 
