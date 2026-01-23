@@ -3421,13 +3421,17 @@
 
             // 準備圖片列表
             // 優先使用 product.images 陣列（如果存在），這樣可以顯示所有相關圖片
+            let allImages = [];
             if (product.images && product.images.length > 0) {
-                productImages = product.images;
+                allImages = product.images;
             } else if (hasVariants) {
-                productImages = product.variants.map(v => v.image);
+                allImages = product.variants.map(v => v.image);
             } else {
-                productImages = [product.image];
+                allImages = [product.image];
             }
+
+            // 去除重複的圖片，確保每張圖片只出現一次
+            productImages = [...new Set(allImages)];
             currentImageIndex = 0;
 
             // 顯示第一張圖片
