@@ -3844,11 +3844,12 @@
                     const minPrice = Math.min(...product.variants.map(v => v.price));
                     const maxPrice = Math.max(...product.variants.map(v => v.price));
                     const priceDisplay = minPrice === maxPrice ? `NT$ ${minPrice}` : `NT$ ${minPrice}~${maxPrice}`;
+                    const coverImage = product.images && product.images.length > 0 ? product.images[0] : product.image;
 
                     return `
                         <div class="product-card" onclick="showProductDetail(${product.id})" style="cursor: pointer;">
                             <div class="product-image-wrapper">
-                                <img src="${product.image}" alt="${product.name}">
+                                <img src="${coverImage}" alt="${product.name}">
                                 <div class="product-image-overlay">
                                     <div class="product-image-overlay-text">🔍 點擊查看詳情</div>
                                 </div>
@@ -3860,10 +3861,12 @@
                     `;
                 } else {
                     // 一般商品：整個卡片可點擊，需進入詳情頁才能加入購物車
+                    const coverImage = product.images && product.images.length > 0 ? product.images[0] : product.image;
+
                     return `
                         <div class="product-card" onclick="showProductDetail(${product.id})" style="cursor: pointer;">
                             <div class="product-image-wrapper">
-                                <img src="${product.image}" alt="${product.name}">
+                                <img src="${coverImage}" alt="${product.name}">
                                 <div class="product-image-overlay">
                                     <div class="product-image-overlay-text">🔍 點擊查看詳情</div>
                                 </div>
