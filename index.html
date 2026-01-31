@@ -5789,18 +5789,18 @@
         // Hot Products modal functions
         const hotProducts = [
             {
-                id: 8002,
+                id: 8068,
                 rank: 1,
-                name: 'Mediheal 精華面膜 10 片入',
-                description: '熱賣NO.1韓國面膜！多種功效可選，深層滋養肌膚，補水保濕一次到位',
-                image: 'https://drive.google.com/thumbnail?id=1q6yvsboBZWBwPNiVNq3h6e2_23lCReoq&sz=w1000'
+                name: 'Medicube booster Pro 美容儀',
+                description: '熱賣NO.1美容儀！微振動能量＋導入技術，促進保養成分吸收，提升保養效果',
+                image: 'https://drive.google.com/thumbnail?id=1pXfmXReC38exmh5sU0E-ZBZYfc_nNG_h&sz=w1000'
             },
             {
-                id: 8011,
+                id: 8005,
                 rank: 2,
-                name: 'Dasique 布丁光澤唇釉',
-                description: '超人氣唇釉！水潤光澤質地，打造飽滿雙唇，12色可選',
-                image: 'https://drive.google.com/thumbnail?id=1y2NQ3ShOGBmgaOtbzM5jCj8DKxezFtVa&sz=w1000'
+                name: 'Numbuzin 3 號水光收毛孔面膜',
+                description: '超人氣面膜！水光精華配方，有效收縮毛孔，補水保濕一次到位',
+                image: 'https://drive.google.com/thumbnail?id=1WzamIq1aYmRyqZ9QM7ozzpjASezmHXK1&sz=w1000'
             },
             {
                 id: 8018,
@@ -5810,18 +5810,18 @@
                 image: 'https://drive.google.com/thumbnail?id=1dLfJeU0IHxZ0IHwsI5E34hPSd8Q49CfR&sz=w1000'
             },
             {
-                id: 8005,
+                id: 8002,
                 rank: 4,
-                name: 'Numbuzin 3 號水光收毛孔面膜',
-                description: '超強補水面膜！水光精華配方，有效收縮毛孔，敏感肌也適用',
-                image: 'https://drive.google.com/thumbnail?id=1WzamIq1aYmRyqZ9QM7ozzpjASezmHXK1&sz=w1000'
+                name: 'Mediheal 精華面膜 10 片入',
+                description: '經典韓國面膜！多種功效可選，深層滋養肌膚，補水保濕效果顯著',
+                image: 'https://drive.google.com/thumbnail?id=1q6yvsboBZWBwPNiVNq3h6e2_23lCReoq&sz=w1000'
             },
             {
-                id: 8012,
+                id: 8011,
                 rank: 5,
-                name: 'Dasique 20 色眼影盤',
-                description: '超值眼影盤！豐富配色選擇，打造多變眼妝，7款可選',
-                image: 'https://drive.google.com/thumbnail?id=1dXkIzzbpFFUKsRPgaJsGjyWDs7rRh7-t&sz=w1000'
+                name: 'Dasique 布丁光澤唇釉',
+                description: '超人氣唇釉！水潤光澤質地，打造飽滿雙唇，12色可選',
+                image: 'https://drive.google.com/thumbnail?id=1y2NQ3ShOGBmgaOtbzM5jCj8DKxezFtVa&sz=w1000'
             }
         ];
 
@@ -5855,7 +5855,7 @@
                         <img src="${product.image}" alt="${product.name}" class="hot-product-image">
                         <div class="hot-product-info">
                             <div class="hot-product-name">${product.name}</div>
-                            <div class="hot-product-description">${product.description}</div>
+                            <div class="hot-product-description">${product.description || ''}</div>
                             <div style="color: #000000; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">
                                 ${hasVariants ? `NT$ ${price} 起` : `NT$ ${price}`}
                             </div>
