@@ -5842,10 +5842,25 @@
 
                 // 從 products 陣列中找到完整的商品資料
                 const fullProduct = products.find(p => p.id === product.id);
-                const price = fullProduct ? fullProduct.price : 0;
-                const spec = fullProduct ? fullProduct.description : '';
                 const isViewOnly = fullProduct && (fullProduct.country === 'singapore' || fullProduct.country === 'japan');
                 const hasVariants = fullProduct && fullProduct.variants && fullProduct.variants.length > 0;
+
+                // 計算價格顯示
+                let priceDisplay = '';
+                if (fullProduct) {
+                    if (hasVariants) {
+                        const prices = fullProduct.variants.map(v => v.price);
+                        const minPrice = Math.min(...prices);
+                        const maxPrice = Math.max(...prices);
+                        if (minPrice === maxPrice) {
+                            priceDisplay = `NT$ ${minPrice}`;
+                        } else {
+                            priceDisplay = `NT$ ${minPrice} - ${maxPrice}`;
+                        }
+                    } else {
+                        priceDisplay = `NT$ ${fullProduct.price || 0}`;
+                    }
+                }
 
                 return `
                     <div class="hot-product-item" onclick="openHotProductDetail(${product.id})" style="cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)';" onmouseout="this.style.transform=''; this.style.boxShadow='';">
@@ -5857,7 +5872,7 @@
                             <div class="hot-product-name">${product.name}</div>
                             <div class="hot-product-description">${product.description || ''}</div>
                             <div style="color: #000000; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">
-                                ${hasVariants ? `NT$ ${price} 起` : `NT$ ${price}`}
+                                ${priceDisplay}
                             </div>
                             ${isViewOnly ? `
                                 <div style="padding: 10px; background: #fff3e0; border: 1px solid #ff9800; border-radius: 5px; color: #f57c00; font-size: 0.9em; margin-bottom: 10px;">
