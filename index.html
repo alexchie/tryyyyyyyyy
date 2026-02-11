@@ -1577,11 +1577,11 @@
         <div class="country-selector">
             <div class="country-selector-title">選擇代購國家</div>
             <div class="country-cards">
-                <!-- 韓國 - 當前可購買 -->
-                <div class="country-card" id="korea-card" onclick="selectCountry('korea')">
+                <!-- 韓國 - 暫不開放購買 -->
+                <div class="country-card" id="korea-card" onclick="selectCountry('korea')" style="opacity: 0.85;">
+                    <span class="coming-soon-badge" style="background: #ff9800;">暫不開放</span>
                     <div class="country-name">韓國 🇰🇷</div>
-                    <div class="country-deadline">截止：2025/2/4</div>
-                    <div class="country-deadline">預計2/7出貨</div>
+                    <div class="country-status" style="color: #666;">僅供瀏覽</div>
                 </div>
 
                 <!-- 日本 - 暫不開放購買 -->
@@ -1591,11 +1591,11 @@
                     <div class="country-status" style="color: #666;">僅供瀏覽</div>
                 </div>
 
-                <!-- 新加坡 - 暫不開放購買 -->
-                <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')" style="opacity: 0.85;">
-                    <span class="coming-soon-badge" style="background: #ff9800;">暫不開放</span>
+                <!-- 新加坡 - 當前可購買 -->
+                <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')">
                     <div class="country-name">新加坡 🇸🇬</div>
-                    <div class="country-status" style="color: #666;">僅供瀏覽</div>
+                    <div class="country-deadline">截止：2025/2/13</div>
+                    <div class="country-deadline">預計2/24出貨</div>
                 </div>
 
                 <!-- 馬來西亞 - 即將推出 -->
@@ -5405,12 +5405,12 @@
         // 頁面載入和視窗大小改變時更新路徑
         window.addEventListener('load', initAirplaneAnimation);
         window.addEventListener('load', function() {
-            selectCountry('korea');
+            selectCountry('singapore');
         });
         window.addEventListener('resize', initAirplaneAnimation);
 
         // 當前選擇的國家
-        let currentCountry = 'korea';
+        let currentCountry = 'singapore';
 
         // 國家選擇功能
         function selectCountry(country) {
