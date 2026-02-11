@@ -5789,39 +5789,39 @@
         // Hot Products modal functions
         const hotProducts = [
             {
-                id: 8068,
+                id: 7,
                 rank: 1,
-                name: 'Medicube booster Pro 美容儀',
-                description: '熱賣NO.1美容儀！微振動能量＋導入技術，促進保養成分吸收，提升保養效果',
-                image: 'https://drive.google.com/thumbnail?id=1pXfmXReC38exmh5sU0E-ZBZYfc_nNG_h&sz=w1000'
+                name: 'TWG 小熊茶香軟糖',
+                description: '超高顏值明星商品！台灣秒殺款，8種口味可選，可直接吃或泡茶，點滿儀式感',
+                image: 'https://drive.google.com/thumbnail?id=1vtkI5z162RazTMe81O8PGxP6GMbHEVn4&sz=w1000'
             },
             {
-                id: 8005,
+                id: 1,
                 rank: 2,
-                name: 'Numbuzin 3 號水光收毛孔面膜',
-                description: '超人氣面膜！水光精華配方，有效收縮毛孔，補水保濕一次到位',
-                image: 'https://drive.google.com/thumbnail?id=1WzamIq1aYmRyqZ9QM7ozzpjASezmHXK1&sz=w1000'
+                name: 'TWG 茶包',
+                description: 'TWG 精選茶包系列！經典風味集合，從濃郁到清新一應俱全，多款式可選',
+                image: 'https://drive.google.com/thumbnail?id=14l7l-41wt5heKdPW4UFH8QcV9qBvptZf&sz=w1000'
             },
             {
-                id: 8018,
+                id: 19,
                 rank: 3,
-                name: 'Fwee 唇頰兩用膏單入',
-                description: '多功能唇頰兩用！豐富色彩選擇，一抹打造自然紅潤氣色',
-                image: 'https://drive.google.com/thumbnail?id=1dLfJeU0IHxZ0IHwsI5E34hPSd8Q49CfR&sz=w1000'
+                name: 'IRVINS 魚皮',
+                description: '新加坡國民零食！零食界的愛馬仕，香脆美味，派對必備，驚艷所有人',
+                image: 'https://drive.google.com/thumbnail?id=14AlKpwF0s5piopxZBkdhTL2vhpvDclPO&sz=w1000'
             },
             {
-                id: 8002,
+                id: 15,
                 rank: 4,
-                name: 'Mediheal 精華面膜 10 片入',
-                description: '經典韓國面膜！多種功效可選，深層滋養肌膚，補水保濕效果顯著',
-                image: 'https://drive.google.com/thumbnail?id=1q6yvsboBZWBwPNiVNq3h6e2_23lCReoq&sz=w1000'
+                name: '百勝廚泡麵系列',
+                description: '世界冠軍泡麵！非油炸麵體，QQ口感，叻沙、蝦湯、辣螃蟹三種南洋風味',
+                image: 'https://drive.google.com/thumbnail?id=1wPMFdpAdLtA-hJu1kYT5-jA42B3dUBby&sz=w1000'
             },
             {
-                id: 8011,
+                id: 32,
                 rank: 5,
-                name: 'Dasique 布丁光澤唇釉',
-                description: '超人氣唇釉！水潤光澤質地，打造飽滿雙唇，12色可選',
-                image: 'https://drive.google.com/thumbnail?id=1y2NQ3ShOGBmgaOtbzM5jCj8DKxezFtVa&sz=w1000'
+                name: '金鴨 零食',
+                description: '新加坡知名零食品牌！獨特鹹蛋黃風味，香酥可口，多種口味選擇',
+                image: 'https://drive.google.com/thumbnail?id=1GPnN-rMqiYp_PN0kpqrD-LJjwXYVTPkl&sz=w1000'
             }
         ];
 
@@ -5842,7 +5842,7 @@
 
                 // 從 products 陣列中找到完整的商品資料
                 const fullProduct = products.find(p => p.id === product.id);
-                const isViewOnly = fullProduct && (fullProduct.country === 'singapore' || fullProduct.country === 'japan');
+                const isViewOnly = fullProduct && (fullProduct.country === 'japan' || fullProduct.country === 'korea');
                 const hasVariants = fullProduct && fullProduct.variants && fullProduct.variants.length > 0;
 
                 // 計算價格顯示
