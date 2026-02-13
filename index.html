@@ -1580,7 +1580,7 @@
                 <!-- 新加坡 - 當前可購買 -->
                 <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')">
                     <div class="country-name">新加坡 🇸🇬</div>
-                    <div class="country-deadline">截止：2025/2/13</div>
+                    <div class="country-deadline">截止：2025/2/14</div>
                     <div class="country-deadline">預計2/24出貨</div>
                 </div>
 
@@ -4565,9 +4565,9 @@
                 document.getElementById('productSimpleSection').style.display = 'none';
                 renderVariantsList(product.variants);
 
-                // 如果是新加坡或日本商品，禁用加入購物車按鈕
+                // 如果是韓國或日本商品，禁用加入購物車按鈕
                 const variantBtn = document.getElementById('variantAddToCartBtn');
-                if (product.country === 'singapore' || product.country === 'japan') {
+                if (product.country === 'korea' || product.country === 'japan') {
                     variantBtn.disabled = true;
                     variantBtn.style.background = '#ccc';
                     variantBtn.style.cursor = 'not-allowed';
@@ -4583,9 +4583,9 @@
                 document.getElementById('productSimpleSection').style.display = 'block';
                 document.getElementById('simpleProductQty').value = 1;
 
-                // 如果是新加坡或日本商品，禁用加入購物車按鈕
+                // 如果是韓國或日本商品，禁用加入購物車按鈕
                 const simpleBtn = document.getElementById('simpleAddToCartBtn');
-                if (product.country === 'singapore' || product.country === 'japan') {
+                if (product.country === 'korea' || product.country === 'japan') {
                     simpleBtn.disabled = true;
                     simpleBtn.style.background = '#ccc';
                     simpleBtn.style.cursor = 'not-allowed';
@@ -4710,8 +4710,8 @@
 
         // 將單一商品加入購物車
         function addSimpleProductToCart() {
-            // 檢查是否為新加坡或日本商品
-            if (currentProduct.country === 'singapore' || currentProduct.country === 'japan') {
+            // 檢查是否為韓國或日本商品
+            if (currentProduct.country === 'korea' || currentProduct.country === 'japan') {
                 alert('此區域商品目前暫不開放購買，僅供瀏覽。');
                 return;
             }
@@ -4837,8 +4837,8 @@
         function addVariantsToCart() {
             if (!currentProduct || !currentProduct.variants) return;
 
-            // 檢查是否為新加坡或日本商品
-            if (currentProduct.country === 'singapore' || currentProduct.country === 'japan') {
+            // 檢查是否為韓國或日本商品
+            if (currentProduct.country === 'korea' || currentProduct.country === 'japan') {
                 alert('此區域商品目前暫不開放購買，僅供瀏覽。');
                 return;
             }
