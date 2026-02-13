@@ -1605,11 +1605,10 @@
                     <div class="country-status">預計2/1開放</div>
                 </div>
 
-                <!-- 美國 - 即將推出 -->
-                <div class="country-card coming-soon">
-                    <span class="coming-soon-badge">即將推出</span>
+                <!-- 美國 - 開放中 -->
+                <div id="usa-card" class="country-card" onclick="selectCountry('usa')">
                     <div class="country-name">美國 🇺🇸</div>
-                    <div class="country-status">預計2/18開放</div>
+                    <div class="country-status">開放中</div>
                 </div>
             </div>
         </div>
@@ -1693,6 +1692,14 @@
                 <button onclick="filterByCategory('japan-cosmetics')">藥妝類</button>
                 <button onclick="filterByCategory('japan-food')">飲食類</button>
                 <button onclick="filterByCategory('japan-electronics')">電器類</button>
+            </div>
+        </div>
+
+        <!-- 美國分類導航 -->
+        <div class="category-nav" id="usa-categories" style="display: none;">
+            <div>
+                <button class="active" onclick="filterByCategory('all')">全部商品</button>
+                <button onclick="filterByCategory('nba-warriors')">NBA 勇士隊 周邊商品</button>
             </div>
         </div>
 
@@ -4409,6 +4416,281 @@
                 country: 'korea',
                 price: 1450,
                 detailedDescription: 'Starbucks X Friends 聯名商品，城市夜光杯，夜光效果獨特設計'
+            },
+            // ========== 美國商品 - NBA 勇士隊周邊 ==========
+            {
+                id: 6001,
+                name: '勇士水杯 (Tumbler)',
+                price: 950,
+                description: '710 ml (容量)',
+                image: 'https://drive.google.com/thumbnail?id=1Sf0b0BldwlbGoh3vPnBjLJLITuCm98QS&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權 Tumbler 水杯，710ml 大容量，適合日常使用及運動攜帶。'
+            },
+            {
+                id: 6002,
+                name: '勇士隊標鑰匙扣',
+                price: 500,
+                description: '壓克力製',
+                image: 'https://drive.google.com/thumbnail?id=1ZuAS30r3JYHckLt7E4Jwk2jMbeE47pR1&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權壓克力鑰匙扣，精緻小巧，球迷必備配件。'
+            },
+            {
+                id: 6003,
+                name: '勇士水杯 (Arctic)',
+                price: 950,
+                description: '710 ml (容量)',
+                image: 'https://drive.google.com/thumbnail?id=18K8uBOqPiCLKWsu9-AidUe7BzchC9yUW&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=18K8uBOqPiCLKWsu9-AidUe7BzchC9yUW&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1YhlosO-wJvsnQL376ZftsS5-t0fIFu7T&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權 Arctic 系列水杯，710ml 容量，保溫保冷效果佳。'
+            },
+            {
+                id: 6004,
+                name: '勇士水杯 (Tumbler) - 特別款',
+                price: 950,
+                description: '710 ml (容量)',
+                image: 'https://drive.google.com/thumbnail?id=1TqVdraRL7geR-Tq_NODy0YeynZqAfxyZ&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權 Tumbler 水杯特別款，710ml 容量，限量設計。'
+            },
+            {
+                id: 6005,
+                name: 'NBA 全明星帽子',
+                price: 1350,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1EVi2MiILLJx-TtLV06fzbmzFMUhHW32W&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1EVi2MiILLJx-TtLV06fzbmzFMUhHW32W&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1amlCn_nYckXUFi_AmNKggUp-3JQG2qUt&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1VaHURh_ELUQgd6EQGUJSVoLpPUMwe6_H&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 全明星官方授權帽子，經典設計，展現籃球熱情。'
+            },
+            {
+                id: 6006,
+                name: '勇士隊 帽子 (經典款式)',
+                price: 1250,
+                description: '多款顏色可選',
+                image: 'https://drive.google.com/thumbnail?id=1HVcyThYLuFJ2XY10c0JYu-lGAKnlTMzL&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權經典款帽子，多款顏色可選，展現你的勇士精神！',
+                variants: [
+                    {
+                        id: 60061,
+                        name: '藍色1',
+                        price: 1250,
+                        image: 'https://drive.google.com/thumbnail?id=1HVcyThYLuFJ2XY10c0JYu-lGAKnlTMzL&sz=w1000',
+                        description: '經典藍色款式'
+                    },
+                    {
+                        id: 60062,
+                        name: '藍色2',
+                        price: 1300,
+                        image: 'https://drive.google.com/thumbnail?id=1LYkOpl6ws97i3ltBk8BfyWrndWqHNnKu&sz=w1000',
+                        description: '特別藍色款式'
+                    },
+                    {
+                        id: 60063,
+                        name: '深藍色',
+                        price: 1250,
+                        image: 'https://drive.google.com/thumbnail?id=1bCxLnvYyg3iIorBgx5pPKQoZN47maJFp&sz=w1000',
+                        description: '深藍色款式'
+                    },
+                    {
+                        id: 60064,
+                        name: '淺藍色',
+                        price: 1250,
+                        image: 'https://drive.google.com/thumbnail?id=1z6A1tSarFx9zd96k4FKjNo9n2kCZeNAJ&sz=w1000',
+                        description: '淺藍色款式'
+                    },
+                    {
+                        id: 60065,
+                        name: '黃色',
+                        price: 1250,
+                        image: 'https://drive.google.com/thumbnail?id=17DGlf6ISImScYZyNhOEWU8B_gdeDpfjA&sz=w1000',
+                        description: '黃色款式'
+                    },
+                    {
+                        id: 60066,
+                        name: '藍白混色',
+                        price: 1350,
+                        image: 'https://drive.google.com/thumbnail?id=1j58owUZscaKRxKVx4EW3dtK-2WtaXJdN&sz=w1000',
+                        description: '藍白混色款式'
+                    }
+                ]
+            },
+            {
+                id: 6007,
+                name: '勇士隊 帽子 (特別款式1)',
+                price: 1350,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1EJhCm_fstYUfi3aydcifD7xO_nuy5BRn&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1EJhCm_fstYUfi3aydcifD7xO_nuy5BRn&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1Ccdnt3nJxjchw_IvyEcdoyEbQSqlnfnE&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=14dKltBQ3HzHDwhLgMooMeeEWY2JfzEJ8&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子，獨特設計，限量發售。'
+            },
+            {
+                id: 6008,
+                name: '勇士隊 帽子 (特別款式2)',
+                price: 1350,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1gRLCj3wFoMwNPiliqvELDbyAhTry2Mz1&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1gRLCj3wFoMwNPiliqvELDbyAhTry2Mz1&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1PqhGl8vPgPjVMnvkYJ4U2vkF_w9LjExd&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1G5SA4zmGX1FE1oM-q0ZQDRmw0YbYtlfz&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子，時尚設計。'
+            },
+            {
+                id: 6009,
+                name: '勇士隊 帽子 (特別款式3)',
+                price: 1450,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1GJYaOrw7bHSmRH6OMc077UUdlBlcmqyx&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1GJYaOrw7bHSmRH6OMc077UUdlBlcmqyx&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1POcqzSyTJUVYJU5UQKrqQkuteEqmlOEU&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子，高級材質。'
+            },
+            {
+                id: 6010,
+                name: '勇士隊 帽子 (特別款式4)',
+                price: 1450,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1oyn1kx0awxGz5dUVdQqrVPbOf2XZPFQa&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1oyn1kx0awxGz5dUVdQqrVPbOf2XZPFQa&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=17WKWEuaXUTSPSFIk-0-y1-CZ0VmFUwiL&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子，精緻工藝。'
+            },
+            {
+                id: 6011,
+                name: '勇士隊 帽子 (特別款式5)',
+                price: 1350,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=16LXd3lmYMNQwe6sLw3bQJy89ExmsEpkF&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=16LXd3lmYMNQwe6sLw3bQJy89ExmsEpkF&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1ccARiDwmTNuqKL7YLb_P83NRMReMphuR&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子。'
+            },
+            {
+                id: 6012,
+                name: '勇士隊 帽子 (特別款式6)',
+                price: 1350,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1Iqa5OV9DIuwYw5388igB_19PJLSdLRAQ&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1Iqa5OV9DIuwYw5388igB_19PJLSdLRAQ&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1MUwRS72ZStfplPpwNDvw486MWjYfELNQ&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子。'
+            },
+            {
+                id: 6013,
+                name: '勇士隊 帽子 (特別款式7)',
+                price: 1450,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1ByP60UxEt62CHlCRPhhiVrRyoDbMmWjj&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1ByP60UxEt62CHlCRPhhiVrRyoDbMmWjj&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1RtKq9DRPD-rNb2t6h5nwc3kZQpEmqyed&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1Yi8KrxuzOA8hBUt1tlotFayEt-CG2bZc&sz=w1000'
+                ],
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子。'
+            },
+            {
+                id: 6014,
+                name: '勇士隊 帽子 (特別款式8)',
+                price: 1250,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1Xp3VvhL7jNLuZirqxCFbkXXZnEZ2Y3Jq&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權特別款式帽子。'
+            },
+            {
+                id: 6015,
+                name: '勇士隊 運動用藍芽耳機',
+                price: 2000,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1kBbFcptsgIV_iP-8pnoJxCLdRqtObuve&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權藍芽耳機，運動專用，音質出色。'
+            },
+            {
+                id: 6016,
+                name: '勇士隊 馬克杯 *2 藍白各一',
+                price: 1500,
+                description: '440ml 容量',
+                image: 'https://drive.google.com/thumbnail?id=1P6olkqqdnEU6K5mPuE6Nt03dTic9HWV9&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權馬克杯組，藍白各一個，440ml 容量，適合日常使用。'
+            },
+            {
+                id: 6017,
+                name: '勇士隊 馬克杯 *2 復古款',
+                price: 2000,
+                description: '440ml 容量',
+                image: 'https://drive.google.com/thumbnail?id=1096RjWL72Ug_QfOOb5e89S4UAyhDCKZc&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權馬克杯組復古款，440ml 容量，經典設計。'
+            },
+            {
+                id: 6018,
+                name: '勇士隊 馬克杯 *2 特別款',
+                price: 2000,
+                description: '440ml 容量',
+                image: 'https://drive.google.com/thumbnail?id=1640Li89trtVG7Qgqw6GM_BfSsNjCiGTz&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權馬克杯組特別款，440ml 容量，限量設計。'
+            },
+            {
+                id: 6019,
+                name: '勇士隊 紀念品禮盒',
+                price: 3000,
+                description: '',
+                image: 'https://drive.google.com/thumbnail?id=1EaA25VMuUqa5-8v1Vs8jV7tUDPrh_d9d&sz=w1000',
+                category: 'nba-warriors',
+                country: 'usa',
+                detailedDescription: '此禮盒內含以下物品：\n\n• 30吋 x 60吋沙灘巾\n• 雙面花園旗，配金屬花園旗桿\n• 多用途貼紙，內含三張貼紙\n• 7吋耐用不銹鋼陡峭開瓶器\n• 纖薄型罐裝保溫套 2 件裝及普通型罐裝保溫套 2 件裝\n• 官方授權'
             }
         ];
 
@@ -5436,6 +5718,7 @@
             document.getElementById('singapore-categories').style.display = 'none';
             document.getElementById('korea-categories').style.display = 'none';
             document.getElementById('japan-categories').style.display = 'none';
+            document.getElementById('usa-categories').style.display = 'none';
 
             // 顯示對應國家的分類導航
             if (country === 'singapore') {
@@ -5447,6 +5730,9 @@
             } else if (country === 'japan') {
                 document.getElementById('japan-categories').style.display = 'block';
                 console.log('日本代購服務開放中，截止日期：2025/1/25');
+            } else if (country === 'usa') {
+                document.getElementById('usa-categories').style.display = 'block';
+                console.log('美國代購服務開放中');
             }
 
             // 更新當前國家
