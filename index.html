@@ -1577,18 +1577,18 @@
         <div class="country-selector">
             <div class="country-selector-title">選擇代購國家</div>
             <div class="country-cards">
-                <!-- 新加坡 - 當前可購買 -->
-                <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')">
-                    <div class="country-name">新加坡 🇸🇬</div>
-                    <div class="country-deadline">截止：2025/2/14</div>
-                    <div class="country-deadline">預計2/24出貨</div>
-                </div>
-
                 <!-- 美國 - 開放中 -->
                 <div id="usa-card" class="country-card" onclick="selectCountry('usa')">
                     <div class="country-name">美國 🇺🇸</div>
                     <div class="country-deadline">截止：2025/2/24</div>
                     <div class="country-deadline">預計3/7出貨</div>
+                </div>
+
+                <!-- 新加坡 - 暫不開放購買 -->
+                <div class="country-card" id="singapore-card" onclick="selectCountry('singapore')" style="opacity: 0.85;">
+                    <span class="coming-soon-badge" style="background: #ff9800;">暫不開放</span>
+                    <div class="country-name">新加坡 🇸🇬</div>
+                    <div class="country-status" style="color: #666;">僅供瀏覽</div>
                 </div>
 
                 <!-- 韓國 - 暫不開放購買 -->
@@ -4502,6 +4502,111 @@
             },
             // ========== 美國商品 - NBA 勇士隊紀念衣 ==========
             {
+                id: 10006,
+                name: '勇士隊 黑色短袖',
+                price: 1400,
+                description: '多款尺寸可選',
+                image: 'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=18-syBHB3i7ipOxOiXi01HmJURlYmkV0T&sz=w1000'
+                ],
+                category: 'nba-warriors-apparel',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權黑色短袖，舒適材質，展現球隊精神。',
+                variants: [
+                    { id: 80051, name: 'XS', price: 1400, image: 'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000', description: 'XS 尺寸' },
+                    { id: 80052, name: 'S', price: 1400, image: 'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000', description: 'S 尺寸' },
+                    { id: 80053, name: 'M', price: 1400, image: 'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000', description: 'M 尺寸' },
+                    { id: 80054, name: 'L', price: 1400, image: 'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000', description: 'L 尺寸' },
+                    { id: 80055, name: 'XL', price: 1400, image: 'https://drive.google.com/thumbnail?id=1NeSR84TeBWYf_GugxsEL_57ijgCs7FM0&sz=w1000', description: 'XL 尺寸' }
+                ]
+            },
+            {
+                id: 10007,
+                name: '勇士隊 藍色短袖',
+                price: 1400,
+                description: '多款尺寸可選',
+                image: 'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=18-syBHB3i7ipOxOiXi01HmJURlYmkV0T&sz=w1000'
+                ],
+                category: 'nba-warriors-apparel',
+                country: 'usa',
+                detailedDescription: 'NBA 勇士隊官方授權藍色短袖，舒適材質，展現球隊精神。',
+                variants: [
+                    { id: 80061, name: 'XS', price: 1400, image: 'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000', description: 'XS 尺寸' },
+                    { id: 80062, name: 'S', price: 1400, image: 'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000', description: 'S 尺寸' },
+                    { id: 80063, name: 'M', price: 1400, image: 'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000', description: 'M 尺寸' },
+                    { id: 80064, name: 'L', price: 1400, image: 'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000', description: 'L 尺寸' },
+                    { id: 80065, name: 'XL', price: 1400, image: 'https://drive.google.com/thumbnail?id=1LMuNBdSn2ehHNwvtvQkqZIf8w4bJqECv&sz=w1000', description: 'XL 尺寸' }
+                ]
+            },
+            {
+                id: 10008,
+                name: 'Curry 短袖紀念衣',
+                price: 1600,
+                description: '多款尺寸可選',
+                image: 'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1NlgrsKl8gQiDHOY3kJdG-Nci_Pxz_6G0&sz=w1000'
+                ],
+                category: 'nba-warriors-apparel',
+                country: 'usa',
+                detailedDescription: 'Curry 短袖紀念衣，經典設計，展現球星風采。',
+                variants: [
+                    { id: 80071, name: 'XS', price: 1600, image: 'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000', description: 'XS 尺寸' },
+                    { id: 80072, name: 'S', price: 1600, image: 'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000', description: 'S 尺寸' },
+                    { id: 80073, name: 'M', price: 1600, image: 'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000', description: 'M 尺寸' },
+                    { id: 80074, name: 'L', price: 1600, image: 'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000', description: 'L 尺寸' },
+                    { id: 80075, name: 'XL', price: 1600, image: 'https://drive.google.com/thumbnail?id=1hQlwGUPQeGL85d8lpB-zxXyNTdml7Aga&sz=w1000', description: 'XL 尺寸' }
+                ]
+            },
+            {
+                id: 10009,
+                name: 'Butler 勇士短袖紀念衣',
+                price: 1500,
+                description: '多款尺寸可選',
+                image: 'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1mATd4wJt377rxbigDyIGNOg4S7EYjDB0&sz=w1000'
+                ],
+                category: 'nba-warriors-apparel',
+                country: 'usa',
+                detailedDescription: 'Butler 勇士短袖紀念衣，經典設計，展現球隊精神。',
+                variants: [
+                    { id: 80081, name: 'XS', price: 1500, image: 'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000', description: 'XS 尺寸' },
+                    { id: 80082, name: 'S', price: 1500, image: 'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000', description: 'S 尺寸' },
+                    { id: 80083, name: 'M', price: 1500, image: 'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000', description: 'M 尺寸' },
+                    { id: 80084, name: 'L', price: 1500, image: 'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000', description: 'L 尺寸' },
+                    { id: 80085, name: 'XL', price: 1500, image: 'https://drive.google.com/thumbnail?id=1A4AJMT_Im5FNRd6M-DEkPmGgYml-9GzW&sz=w1000', description: 'XL 尺寸' }
+                ]
+            },
+            {
+                id: 10010,
+                name: 'Curry 黑色短袖紀念衣',
+                price: 1500,
+                description: '多款尺寸可選',
+                image: 'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000',
+                images: [
+                    'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000',
+                    'https://drive.google.com/thumbnail?id=1IticTUbwVde7CfyjEx7JxblofqUknkBb&sz=w1000'
+                ],
+                category: 'nba-warriors-apparel',
+                country: 'usa',
+                detailedDescription: 'Curry 黑色短袖紀念衣，經典設計，展現球星風采。',
+                variants: [
+                    { id: 80091, name: 'XS', price: 1500, image: 'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000', description: 'XS 尺寸' },
+                    { id: 80092, name: 'S', price: 1500, image: 'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000', description: 'S 尺寸' },
+                    { id: 80093, name: 'M', price: 1500, image: 'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000', description: 'M 尺寸' },
+                    { id: 80094, name: 'L', price: 1500, image: 'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000', description: 'L 尺寸' },
+                    { id: 80095, name: 'XL', price: 1500, image: 'https://drive.google.com/thumbnail?id=1JL440KTruDgJsr8aCCnrGDHYfkY1xy1i&sz=w1000', description: 'XL 尺寸' }
+                ]
+            },
+            {
                 id: 10001,
                 name: '勇士隊 藍色經典款帽T',
                 price: 3300,
@@ -6035,7 +6140,7 @@
         window.addEventListener('resize', initAirplaneAnimation);
 
         // 當前選擇的國家
-        let currentCountry = 'singapore';
+        let currentCountry = 'usa';
 
         // 國家選擇功能
         function selectCountry(country) {
