@@ -5403,12 +5403,12 @@
                     <div style="flex: 1; min-width: 0; overflow: hidden;">
                         <div style="font-weight: 600; font-size: 13px; margin-bottom: 2px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${variant.name}</div>
                         ${variant.originalPrice ? `
-                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                                <span style="color: #999; font-size: 12px; text-decoration: line-through;">原價 NT$ ${variant.originalPrice}</span>
-                                <span style="color: #d32f2f; font-weight: 600; font-size: 14px;">NT$ ${variant.price}</span>
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <span style="color: #999; font-size: 11px; text-decoration: line-through;">台灣官方原價 NT$ ${variant.originalPrice}</span>
+                                <span style="color: #d32f2f; font-weight: 600; font-size: 13px;">AB代購特別價格 NT$ ${variant.price}</span>
                             </div>
                         ` : `
-                            <div style="color: #d32f2f; font-weight: 600; font-size: 14px; white-space: nowrap;">NT$ ${variant.price}</div>
+                            <div style="color: #d32f2f; font-weight: 600; font-size: 13px; white-space: nowrap;">AB代購特別價格 NT$ ${variant.price}</div>
                         `}
                     </div>
 
