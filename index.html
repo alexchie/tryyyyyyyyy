@@ -1696,6 +1696,7 @@
                 <button class="active" onclick="filterByCategory('all')">全部商品</button>
                 <button onclick="filterByCategory('nba-warriors-apparel')">NBA 勇士隊 紀念衣</button>
                 <button onclick="filterByCategory('nba-warriors')">NBA 勇士隊 周邊商品</button>
+                <button onclick="filterByCategory('luxury')">精品</button>
             </div>
         </div>
 
@@ -5132,6 +5133,43 @@
                 category: 'nba-warriors',
                 country: 'usa',
                 detailedDescription: '此禮盒內含以下物品：\n\n• 30吋 x 60吋沙灘巾\n• 雙面花園旗，配金屬花園旗桿\n• 多用途貼紙，內含三張貼紙\n• 7吋耐用不銹鋼陡峭開瓶器\n• 纖薄型罐裝保溫套 2 件裝及普通型罐裝保溫套 2 件裝\n• 官方授權'
+            },
+            // ========== 美國商品 - 精品 ==========
+            {
+                id: 30001,
+                name: '雅詩蘭黛精華首選小棕瓶',
+                price: 2200,
+                description: '多款容量可選',
+                image: 'https://drive.google.com/thumbnail?id=1qc2O7DVdOWFISFMf5cCE4BQXPEkT43Bk&sz=w1000',
+                category: 'luxury',
+                country: 'usa',
+                detailedDescription: '雅詩蘭黛「小棕瓶」是一款全面修護肌膚的精華液，添加了雅詩蘭黛的獨家專利：「年輕關鍵修護科技」與「極效修護三胜肽」，配合多種高效的成分，包括維生素C、胺基酸、玻尿酸等，協同肌膚膠原蛋白作用，達到瞬效保濕鎖水、修復抗老、細緻毛孔、調理改善瑕疵、修復透亮膚色、平滑撫紋及使肌膚恢復彈性等七大修護功效，一滴管的劑量可以深入肌膚底層，實現72小時長效保濕，提高肌膚的保濕度、彈性、亮澤度和修復能力，幫助肌膚恢復年輕，全方位抗老。小棕瓶質地為清透的凝露狀，質地輕盈，清爽不油膩，同時不含酒精與油份，適合所有膚質。\n\n小棕瓶的基本使用方法相當簡單，在早晚清潔完臉部後，在使用乳霜或是潤膚霜之前，取出適量的「小棕瓶」精華液，輕輕塗抹於整個面部和頸部即可。(小棕瓶的用量因人而異，建議使用量為每次取滴管按壓1-2次，根據個人的需要進行調整。)',
+                variants: [
+                    {
+                        id: 30101,
+                        name: '30ml',
+                        price: 2200,
+                        originalPrice: 3100,
+                        image: 'https://drive.google.com/thumbnail?id=1qc2O7DVdOWFISFMf5cCE4BQXPEkT43Bk&sz=w1000',
+                        description: '30ml 容量｜台灣官方原價 NT$3,100'
+                    },
+                    {
+                        id: 30102,
+                        name: '50ml',
+                        price: 3200,
+                        originalPrice: 4450,
+                        image: 'https://drive.google.com/thumbnail?id=1qc2O7DVdOWFISFMf5cCE4BQXPEkT43Bk&sz=w1000',
+                        description: '50ml 容量｜台灣官方原價 NT$4,450'
+                    },
+                    {
+                        id: 30103,
+                        name: '100ml',
+                        price: 5300,
+                        originalPrice: null,
+                        image: 'https://drive.google.com/thumbnail?id=1qc2O7DVdOWFISFMf5cCE4BQXPEkT43Bk&sz=w1000',
+                        description: '100ml 容量｜台灣無販售'
+                    }
+                ]
             }
         ];
 
@@ -5364,7 +5402,14 @@
                     <!-- 中間：商品資訊 -->
                     <div style="flex: 1; min-width: 0; overflow: hidden;">
                         <div style="font-weight: 600; font-size: 13px; margin-bottom: 2px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${variant.name}</div>
-                        <div style="color: #d32f2f; font-weight: 600; font-size: 14px; white-space: nowrap;">NT$ ${variant.price}</div>
+                        ${variant.originalPrice ? `
+                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                <span style="color: #999; font-size: 12px; text-decoration: line-through;">原價 NT$ ${variant.originalPrice}</span>
+                                <span style="color: #d32f2f; font-weight: 600; font-size: 14px;">NT$ ${variant.price}</span>
+                            </div>
+                        ` : `
+                            <div style="color: #d32f2f; font-weight: 600; font-size: 14px; white-space: nowrap;">NT$ ${variant.price}</div>
+                        `}
                     </div>
 
                     <!-- 右側：數量控制 -->
